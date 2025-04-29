@@ -1,7 +1,8 @@
 import Button from "./components/ui/Button";
 import { faqsData } from "@/data/faqs"; // Import the data
 import FAQAccordion from "./components/faq/FAQAccordion";
-
+import FullWidthImage from "./components/FullWidthImage";
+import heroImage from "@/public/hero.jpg";
 
 const TransparentIcon: React.FC = () => (
   <svg
@@ -206,25 +207,24 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <FullWidthImage
+        src={heroImage}
+        alt="Beautiful scenery"
+        heights={{
+          base: "h-[400px]",
+          sm: "sm:h-[500px]",
+          md: "md:h-[600px]",
+          lg: "lg:h-[700px]",
+        }}
+        priority
+        blur
+        quality={80}
+      />
       <div className="relative w-full">
         <div className="absolute bottom-10 left-0 ml-6 sm:ml-12 md:ml-16 lg:ml-24 z-10">
           <UrbanOasisBox />
         </div>
       </div>
-      <div className="container mx-auto px-6 md:px-12 pt-12 md:pt-16">
-        <div className="flex">
-          <div className="bg-[#f5f2ed] text-[#231f20] p-6 w-full md:w-1/3 shadow-md">
-            <h3 className="font-bold text-xl mb-2">Urban Oasis</h3>{" "}
-            <p className="text-sm">
-              With years of experience, and a commitment to quality, we take
-              pride in creating spaces that inspire.
-            </p>
-          </div>
-          {/* Empty div to occupy remaining space on larger screens */}
-          <div className="hidden md:block md:w-2/3"></div>
-        </div>
-      </div>
-
       <ProfessionalsSection />
 
       <div className="container mx-auto px-6 md:px-12 py-16 md:py-24">
