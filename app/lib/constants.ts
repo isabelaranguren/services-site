@@ -3,6 +3,7 @@ export const BASE_URL = "https://yourwebsite.com";
 export const BUSINESS_INFO = {
   name: "Best Remodelers Inc.",
   phone: "+1-800-555-1234",
+  email: "info@lunapropertysolutions.net",
   address: {
     street: "123 Main Street",
     city: "Houston",

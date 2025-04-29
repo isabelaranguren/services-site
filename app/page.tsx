@@ -4,11 +4,6 @@ import heroImage from "@/public/hero.jpg";
 import { faqsData } from "@/data/faqs"; // Import the data
 import FAQAccordion from "./components/faq/FAQAccordion";
 
-interface ValueCardProps {
-  title: string;
-  icon: React.ReactNode;
-  description: string;
-}
 
 const TransparentIcon: React.FC = () => (
   <svg
@@ -112,50 +107,31 @@ const ResponsibleIcon: React.FC = () => (
   </svg>
 );
 
-const ValueCard: React.FC<ValueCardProps> = ({ title, icon, description }) => {
-  return (
-    <div className="flex flex-col items-center text-center">
-      {icon}
-      <h3 className="text-2xl font-bold mb-2">{title}</h3>{" "}
-      <p className="text-gray-800 text-sm">{description}</p>{" "}
-    </div>
-  );
-};
-
-// Component for the dark-themed professionals section
+// --- ProfessionalsSection Component (Modified) ---
 const ProfessionalsSection: React.FC = () => {
   return (
+    // Outer div: Full-width background, vertical padding ONLY
     <div className="bg-[#231f20] text-white py-16 md:py-24">
+      {/* Inner div: Applies container constraints to the content */}
       <div className="container mx-auto px-6 md:px-12">
-        {/* Tagline */}
-        <div className="mb-12 flex">
-          <div className="bg-[#f5f2ed] text-[#231f20] p-6 w-full md:w-1/3">
-            <p className="text-lg">
-              quality, we take pride in creating spaces that inspire.
-            </p>
-          </div>
-          <div className="hidden md:block md:w-2/3"></div>
-        </div>
 
-        {/* Main content */}
+        {/* Main content grid (Heading + Text Columns) */}
+        {/* Grid structure remains the same */}
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Title */}
-          <div className="col-span-2">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+          <div className="md:col-span-2">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 md:mb-6 lg:mb-8">
               Behind Every Renovation Is A Team Of Passionate Professionals.
             </h2>
           </div>
-
-          {/* Two columns of text */}
           <div>
-            <p className="text-lg">
+            <p className="text-base text-gray-300">
               With years of experience and a reputation for excellence, our team
               is dedicated to delivering renovations tailored to your unique
               style and needs.
             </p>
           </div>
           <div>
-            <p className="text-lg">
+            <p className="text-base text-gray-300">
               From initial consultation to the final walkthrough, we pride
               ourselves on craftsmanship, communication, and attention to
               detail.
@@ -164,55 +140,53 @@ const ProfessionalsSection: React.FC = () => {
         </div>
 
         {/* Divider */}
-        <div className="my-20 border-t border-gray-700"></div>
+        <div className="my-16 md:my-20 border-t border-gray-700"></div>
 
-        {/* Values Section with 4 columns - but with white icons */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Values Section */}
+        {/* Grid structure remains the same */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+         {/* ... Value Items with Icons ... */}
+           {/* Value Item 1 */}
           <div className="flex flex-col items-center text-center">
             <TransparentIcon />
-            <h3 className="text-2xl font-bold mb-2">Transparent</h3>
-            <p className="text-white text-sm">
-              We believe your space should reflect your unique personality and
-              vision.
+            <h3 className="text-xl md:text-2xl font-semibold mb-3">Transparent</h3>
+            <p className="text-sm text-gray-300">
+              We believe your space should reflect your unique personality and vision.
             </p>
           </div>
-
+          {/* Value Item 2 */}
           <div className="flex flex-col items-center text-center">
             <InnovativeIcon />
-            <h3 className="text-2xl font-bold mb-2">Innovative</h3>
-            <p className="text-white text-sm">
-              We believe your space should reflect your unique personality and
-              vision.
+            <h3 className="text-xl md:text-2xl font-semibold mb-3">Innovative</h3>
+            <p className="text-sm text-gray-300">
+              We believe your space should reflect your unique personality and vision.
             </p>
           </div>
-
+          {/* Value Item 3 */}
           <div className="flex flex-col items-center text-center">
             <ClientCentricIcon />
-            <h3 className="text-2xl font-bold mb-2">Client-Centric</h3>
-            <p className="text-white text-sm">
-              We believe your space should reflect your unique personality and
-              vision.
+            <h3 className="text-xl md:text-2xl font-semibold mb-3">Client-Centric</h3>
+            <p className="text-sm text-gray-300">
+              We believe your space should reflect your unique personality and vision.
             </p>
           </div>
-
+          {/* Value Item 4 */}
           <div className="flex flex-col items-center text-center">
             <ResponsibleIcon />
-            <h3 className="text-2xl font-bold mb-2">Responsible</h3>
-            <p className="text-white text-sm">
-              We believe your space should reflect your unique personality and
-              vision.
+            <h3 className="text-xl md:text-2xl font-semibold mb-3">Responsible</h3>
+            <p className="text-sm text-gray-300">
+              We believe your space should reflect your unique personality and vision.
             </p>
           </div>
         </div>
-      </div>
-    </div>
+
+      </div> {/* End of inner container div */}
+    </div> // End of outer full-width div
   );
 };
 
-export default function Home() {
-  const commonDescription =
-    "We are committed to upholding the highest standards in every project we undertake, ensuring quality and durability.";
 
+export default function Home() {
   return (
     <>
       <div className="container mx-auto px-6 md:px-12 py-16 md:py-24">
@@ -248,8 +222,30 @@ export default function Home() {
         blur
         quality={80}
       />
+      <div className="container mx-auto px-6 md:px-12 pt-12 md:pt-16">
+        {" "}
+        {/* Added padding top */}
+        <div className="flex">
+          {" "}
+          {/* Use flex to position the box left */}
+          {/* The Urban Oasis Box */}
+          <div className="bg-[#f5f2ed] text-[#231f20] p-6 w-full md:w-1/3 shadow-md">
+            {" "}
+            {/* Added shadow like image */}
+            <h3 className="font-bold text-xl mb-2">Urban Oasis</h3>{" "}
+            {/* Added Title */}
+            <p className="text-sm">
+              {" "}
+              {/* Adjusted text size */}
+              With years of experience, and a commitment to quality, we take
+              pride in creating spaces that inspire.
+            </p>
+          </div>
+          {/* Empty div to occupy remaining space on larger screens */}
+          <div className="hidden md:block md:w-2/3"></div>
+        </div>
+      </div>
 
-      {/* Add the dark-themed professionals section here */}
       <ProfessionalsSection />
 
       <div className="container mx-auto px-6 md:px-12 py-16 md:py-24">
@@ -279,4 +275,3 @@ export default function Home() {
   );
 }
 
-export { ValueCard };
