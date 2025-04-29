@@ -1,6 +1,4 @@
-import FullWidthImage from "./components/FullWidthImage";
 import Button from "./components/ui/Button";
-import heroImage from "@/public/hero.jpg";
 import { faqsData } from "@/data/faqs"; // Import the data
 import FAQAccordion from "./components/faq/FAQAccordion";
 
@@ -107,16 +105,11 @@ const ResponsibleIcon: React.FC = () => (
   </svg>
 );
 
-// --- ProfessionalsSection Component (Modified) ---
+
 const ProfessionalsSection: React.FC = () => {
   return (
-    // Outer div: Full-width background, vertical padding ONLY
     <div className="bg-[#231f20] text-white py-16 md:py-24">
-      {/* Inner div: Applies container constraints to the content */}
       <div className="container mx-auto px-6 md:px-12">
-
-        {/* Main content grid (Heading + Text Columns) */}
-        {/* Grid structure remains the same */}
         <div className="grid md:grid-cols-2 gap-10">
           <div className="md:col-span-2">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 md:mb-6 lg:mb-8">
@@ -139,14 +132,8 @@ const ProfessionalsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="my-16 md:my-20 border-t border-gray-700"></div>
-
-        {/* Values Section */}
-        {/* Grid structure remains the same */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-         {/* ... Value Items with Icons ... */}
-           {/* Value Item 1 */}
           <div className="flex flex-col items-center text-center">
             <TransparentIcon />
             <h3 className="text-xl md:text-2xl font-semibold mb-3">Transparent</h3>
@@ -185,6 +172,17 @@ const ProfessionalsSection: React.FC = () => {
   );
 };
 
+ const UrbanOasisBox: React.FC = () => {
+   return (
+     <div className="bg-[#f5f2ed] text-[#231f20] p-6 w-full max-w-sm md:max-w-md lg:max-w-lg shadow-md">
+       <h3 className="font-bold text-xl mb-2">Urban Oasis</h3>
+       <p className="text-sm">
+         With years of experience, and a commitment to quality, we take pride in
+         creating spaces that inspire.
+       </p>
+     </div>
+   );
+ };
 
 export default function Home() {
   return (
@@ -208,35 +206,16 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <FullWidthImage
-        src={heroImage}
-        alt="Beautiful scenery"
-        heights={{
-          base: "h-[400px]",
-          sm: "sm:h-[500px]",
-          md: "md:h-[600px]",
-          lg: "lg:h-[700px]",
-        }}
-        priority
-        blur
-        quality={80}
-      />
+      <div className="relative w-full">
+        <div className="absolute bottom-10 left-0 ml-6 sm:ml-12 md:ml-16 lg:ml-24 z-10">
+          <UrbanOasisBox />
+        </div>
+      </div>
       <div className="container mx-auto px-6 md:px-12 pt-12 md:pt-16">
-        {" "}
-        {/* Added padding top */}
         <div className="flex">
-          {" "}
-          {/* Use flex to position the box left */}
-          {/* The Urban Oasis Box */}
           <div className="bg-[#f5f2ed] text-[#231f20] p-6 w-full md:w-1/3 shadow-md">
-            {" "}
-            {/* Added shadow like image */}
             <h3 className="font-bold text-xl mb-2">Urban Oasis</h3>{" "}
-            {/* Added Title */}
             <p className="text-sm">
-              {" "}
-              {/* Adjusted text size */}
               With years of experience, and a commitment to quality, we take
               pride in creating spaces that inspire.
             </p>

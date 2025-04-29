@@ -118,7 +118,6 @@ const ContactSection = () => {
                 359 Vanderbilt Ave, Brooklyn, NY 11238, USA
               </a>
             </div>
-            {/* Contact */}
             <div>
               <h5 className="mb-5 text-xl font-semibold text-text-dark">
                 Contact Us
