@@ -1,14 +1,14 @@
-export const BASE_URL = "https://yourwebsite.com";
+export const BASE_URL = "https://lunapropertysolutions.net";
 
 export const BUSINESS_INFO = {
-  name: "Best Remodelers Inc.",
+  name: "Luna Property Solutions",
   phone: "+1-800-555-1234",
   email: "info@lunapropertysolutions.net",
   address: {
     street: "123 Main Street",
     city: "Houston",
     state: "TX",
-    zip: "77002",
+    zip: "77095",
     country: "US",
   },
   geo: {

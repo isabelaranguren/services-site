@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import React from "react";
+import { BUSINESS_INFO } from "@/app/lib/constants";
 
 const Footer = () => {
   return (
@@ -92,28 +92,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        <div className="mb-16 mt-10 border-y border-primary py-10 md:mb-20 md:mt-16 md:py-16">
-          <Link href="/" className="inline-block">
-            <Image
-              src="/logo.png"
-              alt="Renovation Logo"
-              width={250} // Adjust size as needed
-              height={300}
-              className="h-auto max-w-[150px]" // Control size
-            />
-          </Link>
-        </div>
         <div className="flex flex-col items-center justify-between gap-4 text-center text-base md:flex-row md:text-left">
-          {/* .footer-copyright */}
           <div className="text-primary">
-            © Renovation. All Rights Reserved.{" "}
-            <Link
-              href="/templates/licensing"
-              className="text-primary transition-colors hover:text-white"
-            >
-              Licensing
-            </Link>
+            © {BUSINESS_INFO.name}. All Rights Reserved.
           </div>
           <div className="flex flex-col gap-2 md:flex-row md:gap-4">
             <div className="text-primary">
@@ -132,7 +113,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-white transition-colors hover:text-primary"
               >
-                wCopilot
+                IA
               </a>
             </div>
             <div className="text-primary">
