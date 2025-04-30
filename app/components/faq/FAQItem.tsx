@@ -25,18 +25,18 @@ function FAQItem({ question, answer }: FAQItemProps) {
           .replace(/\s+/g, "-")
           .toLowerCase()}`}
       >
-        <span className="text-lg font-medium text-gray-900 ">
+        <span className="text-lg font-bold text-gray-900 ">
           {question}
         </span>
         <span className="ml-6 flex items-center">
           {isOpen ? (
             <ChevronUp
-              className="h-5 w-5 text-gray-600 dark:text-gray-400"
+              className="h-5 w-5 text-gray-900"
               aria-hidden="true"
             />
           ) : (
             <ChevronDown
-              className="h-5 w-5 text-gray-700 dark:text-gray-400"
+              className="h-5 w-5 text-gray-900"
               aria-hidden="true"
             />
           )}
@@ -46,7 +46,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
         id={`faq-content-${question.replace(/\s+/g, "-").toLowerCase()}`}
         className={`${
           isOpen ? "block" : "hidden"
-        } py-4 text-gray-500 dark:text-gray-400`}
+        } py-4 text-gray-800`}
       >
         {answer}
       </div>
