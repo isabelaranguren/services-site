@@ -20,7 +20,7 @@ module.exports = {
         "dark-gray-50": "rgba(175, 175, 175, 0.5)", 
         "dark-gray-30": "rgba(175, 175, 175, 0.3)", 
         "white-50": "rgba(255, 255, 255, 0.5)", 
-        "primary-blue": "#2D3C56"
+        "accent-blue": "#2d3c56"
        
       },
       fontFamily: {

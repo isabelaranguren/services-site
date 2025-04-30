@@ -1,9 +1,9 @@
 import React from 'react'
-import HeroBanner from '../components/HeroBanner';
+import FourBannerSection from '../components/sections/FourBannerSection';
 
 const Services = () => {
   return <div>
-    <HeroBanner/>
+    <FourBannerSection/>
   </div>;
 }
 

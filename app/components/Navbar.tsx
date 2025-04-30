@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { navigationItems } from "@/data/navigation";
 import Button from "./ui/Button";
@@ -40,12 +41,7 @@ const NavBar = () => {
               onClick={closeMenus}
               className="flex items-center gap-2"
             >
-              <span className="bg-blue-600 text-white p-1 text-xs flex items-center justify-center w-6 h-6">
-                ◆
-              </span>
-              <span className="text-2xl font-bold text-gray-900">
-                renovation
-              </span>
+              <Image src="/logo.png" alt="Logo" width={100} height={50} />
             </Link>
           </div>
 

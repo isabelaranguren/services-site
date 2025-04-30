@@ -3,6 +3,7 @@ import { BUSINESS_INFO } from "@/app/lib/constants";
 import React, { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "react-hot-toast";
+import Button from "../ui/Button";
 
 interface FormData {
   name: string;
@@ -33,27 +34,12 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <Button
       type="submit"
       disabled={pending}
-      className="inline-flex items-center justify-center rounded-full border border-text-dark bg-transparent px-8 py-2.5 text-base leading-tight text-text-dark transition-all duration-350 ease-in-out hover:bg-dark hover:text-white disabled:opacity-50"
     >
       {pending ? "Submitting..." : "Submit"}
-      <svg
-        className="ml-2 h-4 w-4"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M14 5l7 7m0 0l-7 7m7-7H3"
-        />
-      </svg>
-    </button>
+    </Button>
   );
 }
 

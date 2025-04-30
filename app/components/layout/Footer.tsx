@@ -4,17 +4,17 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-blue px-4 pb-16 pt-16 md:pb-20 md:pt-20 lg:pt-20">
+    <footer className="bg-[#2d3c56] px-4 pb-16 pt-16 md:pb-20 md:pt-20 lg:pt-20 text-white">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-16 flex flex-col items-start justify-between gap-10 md:mb-20 lg:flex-row lg:items-end lg:gap-16">
           <div className="flex w-full flex-col gap-10 lg:max-w-[55%] lg:gap-12">
-            <p className="text-4xl font-normal uppercase leading-tight text-white">
+            <p className="text-4xl font-normal uppercase leading-tight ">
               Let's Build Something Amazing Together.
             </p>
             <nav className="flex flex-wrap gap-x-8 gap-y-3">
               <Link
                 href="/home-1"
-                className="text-base capitalize text-primary transition-colors hover:text-white"
+                className="text-base capitalize text-primary transition-colors"
               >
                 home
               </Link>
@@ -49,7 +49,7 @@ const Footer = () => {
               <div className="mb-2 text-sm capitalize text-primary">
                 / Main office /
               </div>{" "}
-              <p className="text-2xl leading-tight text-white lg:text-3xl">
+              <p className="text-2xl leading-tight  lg:text-3xl">
                 {" "}
                 {/* .adress-footer */}
                 359 Vanderbilt Ave, Brooklyn, NY 11238, USA
@@ -94,12 +94,12 @@ const Footer = () => {
         </div>
 
         <div className="mb-16 mt-10 border-y border-primary py-10 md:mb-20 md:mt-16 md:py-16">
-          <Link href="/home-1" className="inline-block">
+          <Link href="/" className="inline-block">
             <Image
-              src="/path/to/logo-reno-b-w.svg"
+              src="/logo.png"
               alt="Renovation Logo"
-              width={150} // Adjust size as needed
-              height={30}
+              width={250} // Adjust size as needed
+              height={300}
               className="h-auto max-w-[150px]" // Control size
             />
           </Link>
