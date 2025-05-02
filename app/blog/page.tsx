@@ -1,7 +1,10 @@
-import BlogPostCard from '@/components/BlogPostCard';
-import PageHeroIII from '@/components/Hero/PageHeroIII';
-import NavBar from '@/components/layout/Navbar';
-import React from 'react'
+import React from "react";
+import BlogPostCard from "@/components/BlogPostCard"; // Your Card component
+import type { PostData } from "@/components/BlogPostCard"; // Import the interface from BlogPostCard
+import PageHeroIII from "@/components/Hero/PageHeroIII"; // Your Hero component
+import NavBar from "@/components/layout/Navbar"; // Your Navbar component
+import { getAllPosts } from "@/lib/api"; // Data fetching function (adjust path if needed)
+import type { Post as FetchedPost } from "@/types/wordpress"; // WordPress Post type (adjust path)
 
 export const metadata = {
   title: "Blog",
@@ -9,71 +12,50 @@ export const metadata = {
     "Explore the remodeling services we offer in Houston, including kitchens, bathrooms, basements, home additions, and more. See how Lake Property Solutions can help with your next project.",
 };
 
-const postsData = [
-  {
-    slug: "how-to-keep-your-renovated-space-looking-like-new",
-    date: "2024-11-29", // Use ISO format (YYYY-MM-DD) for easier parsing
-    title: "How to Keep Your Renovated Space Looking Like New",
-    summary:
-      "We believe your space should reflect your unique personality, lifestyle, and vision.",
-    imageUrl: "/images/1.jpg", // Use correct path in /public/images
-    imageAlt: "Renovated space",
-    category: "Renovation",
-  },
-  {
-    slug: "how-we-helped-a-local-business-redefine-their-space",
-    date: "2024-11-29",
-    title: "How We Helped a Local Business Redefine Their Space",
-    summary:
-      "We believe your space should reflect your unique personality, lifestyle, and vision.",
-    imageUrl: "/images/2.jpg",
-    imageAlt: "Business space",
-    category: "News",
-  },
-  {
-    slug: "how-to-choose-the-right-contractor-for-your-renovation",
-    date: "2024-11-29",
-    title: "How to Choose the Right Contractor for Your Renovation",
-    summary:
-      "We believe your space should reflect your unique personality, lifestyle, and vision.",
-    imageUrl: "/images/3.jpg",
-    imageAlt: "Contractor tools",
-    category: "Renovation",
-  },
-  {
-    slug: "our-favorite-home-transformations-of-the-year",
-    date: "2024-11-29",
-    title: "Our Favorite Home Transformations of the Year",
-    summary:
-      "We believe your space should reflect your unique personality, lifestyle, and vision.",
-    imageUrl: "/images/4.jpg",
-    imageAlt: "Home transformation",
-    category: "Renovation",
-  },
-  {
-    slug: "key-considerations-for-renovating-a-commercial-space",
-    date: "2024-12-03",
-    title: "Key Considerations for Renovating a Commercial Space",
-    summary:
-      "We believe your space should reflect your unique personality, lifestyle, and vision.",
-    imageUrl: "/images/blog-5.jpg",
-    imageAlt: "Commercial space sketch",
-    category: "Design",
-  },
-  {
-    slug: "top-5-eco-friendly-upgrades-for-sustainable-living",
-    date: "2024-11-29",
-    title: "Top 5 Eco-Friendly Upgrades for Sustainable Living",
-    summary:
-      "We believe your space should reflect your unique personality, lifestyle, and vision.",
-    imageUrl: "/images/blog-6.jpg",
-    imageAlt: "Eco-friendly home",
-    category: "News",
-  },
-];
+// Helper function to strip basic HTML tags and decode entities from excerpt
+const stripHtml = (html: string | null | undefined): string => {
+  if (!html) return "";
+  // Create a temporary element to leverage browser's decoding
+  if (typeof window !== "undefined") {
+    // Only run in browser context if needed, otherwise use simpler regex
+    try {
+      let doc = new DOMParser().parseFromString(html, "text/html");
+      return doc.body.textContent || "";
+    } catch (e) {
+      // Fallback for environments without DOMParser or if parsing fails
+      return html.replace(/<[^>]*>/g, "").replace(/\[&hellip;\]/g, "...");
+    }
+  }
+  // Basic fallback for server-side rendering if DOMParser isn't available/desired
+  return html
+    .replace(/<p>/gi, "")
+    .replace(/<\/p>/gi, " ")
+    .replace(/\[&hellip;\]/g, "...")
+    .replace(/<[^>]*>/g, "")
+    .trim();
+};
 
+// The Blog component now needs to be async to fetch data
+const Blog = async () => {
+  // Fetch posts from WordPress
+  const fetchedPosts: FetchedPost[] = await getAllPosts();
 
-const Blog = () => {
+  // Function to adapt fetched post data to what BlogPostCard expects (PostData interface)
+  const adaptPostDataForCard = (post: FetchedPost): PostData => {
+    return {
+      // Required fields for PostData
+      slug: post.slug,
+      title: post.title,
+
+      // Optional fields for PostData, mapping from FetchedPost
+      date: post.date, // Pass the date string directly, card handles formatting
+      summary: stripHtml(post.excerpt), // Clean the excerpt for summary
+      imageUrl: post.featuredImage?.node?.sourceUrl, // Pass URL or undefined, card handles placeholder
+      imageAlt: post.featuredImage?.node?.altText, // Pass alt text or undefined, card handles fallback
+      category: post.categories?.nodes?.[0]?.name, // Use first category name or undefined
+    };
+  };
+
   return (
     <>
       <NavBar initialStyle="transparent" />
@@ -84,32 +66,25 @@ const Blog = () => {
         imageUrl="/images/services-hero-bg.jpg"
       />
       <section className="bg-primary-light py-16 md:py-20 lg:py-32">
-        {" "}
-        {/* Adjust py-* for padding */}
-        {/* Corresponds to .base-container */}
         <div className="max-w-screen-xl mx-auto px-4">
-          {" "}
-          {/* Adjust max-w-* and px-* as needed */}
-          {postsData.length > 0 ? (
-            // Corresponds to .blog-collection-grid
-            (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-              {" "}
-              {/* Adjust gap-* */}
-              {postsData.map((post) => (
-                <BlogPostCard key={post.slug} post={post} />
+          {fetchedPosts && fetchedPosts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+              {fetchedPosts.map((post) => (
+                // Use the fetched post's unique ID from WordPress as the key
+                // Adapt the fetched post data before passing it to the card
+                <BlogPostCard key={post.id} post={adaptPostDataForCard(post)} />
               ))}
-            </div>)
+            </div>
           ) : (
-            // Corresponds to .w-dyn-empty or similar
-            (<div className="text-center text-paragraph-gray py-10">No blog posts found.
-                          </div>)
+            <div className="text-center text-paragraph-gray py-10">
+              No blog posts found.
+            </div>
           )}
           {/* TODO: Add Pagination component here if needed */}
-          {/* <div className="mt-16 flex justify-center"> ... pagination ... </div> */}
         </div>
       </section>
     </>
   );
-}
+};
 
 export default Blog;

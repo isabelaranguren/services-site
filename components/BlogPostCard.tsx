@@ -38,8 +38,8 @@ const BlogPostCard: FC<BlogPostCardProps> = ({ post }) => {
 
   const categorySlug =
     category?.toLowerCase().replace(/\s+/g, "-") || "uncategorized";
-  const postUrl = `/blog-posts/${slug}`;
-  const categoryUrl = `/posts-categories/${categorySlug}`;
+  const postUrl = `/blog/${slug}`;
+  const categoryUrl = `/categories/${categorySlug}`;
 
   const finalImageUrl = imageUrl || "/images/placeholder-blog.jpg";
   const finalImageAlt = imageAlt || title || "Blog post image"; // Use title as a fallback alt text
