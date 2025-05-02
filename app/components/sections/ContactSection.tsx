@@ -72,7 +72,6 @@ const ContactSection = () => {
         throw new Error("Failed to submit form");
       }
 
-      // Form submitted successfully
       setSubmitStatus("success");
       toast.success("Thank you! Your message has been sent.");
       setFormData(initialFormData); // Reset form

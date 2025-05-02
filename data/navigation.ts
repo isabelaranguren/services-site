@@ -5,14 +5,8 @@ interface NavigationItem {
 }
 
 export const navigationItems: NavigationItem[] = [
+  { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  { 
-    name: "Services", 
-    href: "/services",
-    submenu: [
-      { name: "Service 1", href: "/services/1" },
-      { name: "Service 2", href: "/services/2" }
-    ]
-  },
   { name: "Contact", href: "/contact" },
+  { name: "Blog", href: "/blog" },
 ];

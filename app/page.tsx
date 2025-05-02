@@ -2,18 +2,25 @@ import Button from "./components/ui/Button";
 import { faqsData } from "@/data/faqs"; // Import the data
 import FAQAccordion from "./components/faq/FAQAccordion";
 import FullWidthImage from "./components/FullWidthImage";
-import heroImage from "@/public/hero.jpg";
+import heroImage from "@/public/hero1.webp";
 import FourBannerSection from "./components/sections/FourBannerSection";
 import PageHeroII from "./components/PageHeroII";
 import MovingBanner from "./components/MovingBanner";
 import SideBySide from "./components/sections/SideBySide";
 import ProjectCardsSection from "./components/sections/ProjectCardsSection";
 import WhyChooseUs from "./components/sections/WhyChooseUs";
+import NavBar from "./components/Navbar";
 
 export default function Home() {
   return (
     <>
-      <PageHeroII />
+      <NavBar initialStyle="white" />
+
+      <PageHeroII
+        title="Reflect your lifestyle, and vision."
+        description="We believe your space should reflect your unique personality, lifestyle, and vision. Whether it's a cozy home renovation or a bold commercial transformation, we are dedicated to turning your ideas into reality."
+      />
+
       <FullWidthImage
         src={heroImage}
         alt="Beautiful scenery"
@@ -49,9 +56,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-     <ProjectCardsSection/>
+      <ProjectCardsSection />
       <FourBannerSection />
-      <WhyChooseUs/>
+      <WhyChooseUs />
 
       <div className="container mx-auto px-6 md:px-12 py-16 md:py-24">
         <div className="flex flex-wrap -mx-4">

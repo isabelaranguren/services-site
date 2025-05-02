@@ -9,8 +9,10 @@ import { localBusinessSchema } from "./lib/schema";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Light Saas Landing Page",
-  description: "Remodeling",
+  title:
+    "Home Renovations & Additions in Houston | Luna Property Solutions",
+  description:
+    "We help homeowners in Houston bring their ideas to life with kitchen remodels, bathroom updates, basement finishing, and more. Practical design, honest work, and a team that listens.",
 };
 
 export default function RootLayout({
@@ -29,7 +31,6 @@ export default function RootLayout({
         />
       </head>
       <body className={clsx(dmSans.className, "antialiased bg-[#EAEEFE]")}>
-        <NavBar />
         {children}
         <Footer />
       </body>

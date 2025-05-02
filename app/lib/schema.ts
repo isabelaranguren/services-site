@@ -1,4 +1,5 @@
 import { WithContext, LocalBusiness, WebSite } from "schema-dts";
+import { BASE_URL, BUSINESS_INFO } from "./constants";
 
 export const localBusinessSchema: WithContext<LocalBusiness> = {
   "@context": "https://schema.org",
@@ -6,8 +7,8 @@ export const localBusinessSchema: WithContext<LocalBusiness> = {
   name: "Best Remodelers Inc.",
   image: "https://yourwebsite.com/logo.png",
   "@id": "https://yourwebsite.com/",
-  url: "https://yourwebsite.com/",
-  telephone: "+1-800-555-1234",
+  url: BASE_URL,
+  telephone: BUSINESS_INFO.phone,
   address: {
     "@type": "PostalAddress",
     streetAddress: "123 Main Street",

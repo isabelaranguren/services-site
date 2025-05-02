@@ -1,7 +1,7 @@
 import React from "react";
 const Button: React.FC<{
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "outline";
+  variant?: "primary" | "secondary" | "outline" | "outline-light";
   className?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   children,
@@ -10,7 +10,7 @@ const Button: React.FC<{
   ...props
 }) => {
   const baseStyle =
-    "px-6 py-2 rounded-md font-medium transition duration-150 ease-in-out";
+    "px-6 py-2 font-medium transition duration-150 ease-in-out";
   let variantStyle = "";
 
   switch (variant) {
@@ -23,6 +23,10 @@ const Button: React.FC<{
     case "outline": // Example if needed
       variantStyle =
         "border border-black hover:bg-white text-black hover:text-gray-900";
+      break;
+    case "outline-light": // Example if needed
+      variantStyle =
+        "border border-white hover:bg-white text-white hover:text-gray-900";
       break;
     default:
       variantStyle = "bg-gray-500 text-white hover:bg-gray-600";

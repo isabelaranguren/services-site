@@ -2,12 +2,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-
 const imageUrls = [
-  "/images/1.jpg", // Corresponds to .background
-  "/images/2.jpg", // Corresponds to .instagram-two
-  "/images/3.jpg", // Corresponds to .instagram-three
-  "/images/4.jpg", // Corresponds to .instagram-four
+  "/images/1.jpg", 
+  "/images/2.jpg", 
+  "/images/3.jpg", 
+  "/images/4.jpg", 
 ];
 
 interface PictureItemProp {
@@ -27,13 +26,12 @@ const PictureItem: React.FC<PictureItemProp> = ({
       target="_blank"
       rel="noopener noreferrer"
       className="group relative flex h-[200px] items-center justify-center overflow-hidden sm:h-[240px] md:h-[300px]" // .instagram-links - adjusted height for responsiveness
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-in-out group-hover:scale-110" // .background + hover scale
         style={{ backgroundImage: `url(${imageUrl})` }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <div className="absolute inset-0 bg-black/30 transition-opacity duration-300 group-hover:bg-black/50"></div>{" "}
       </div>

@@ -102,13 +102,8 @@ const ResponsibleIcon: React.FC = () => (
 
 export default function AboutSection() {
   return (
-    <div className="bg-[#2d3c56] text-white py-16 md:py-24">
+    <div className="bg-[#2d3c56] text-white pt-0 pb-16 md:pb-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight">
-          Redefine Your Life
-        </h1>
-
-        <hr className="my-16 md:my-20 border-t border-gray-200"></hr>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           <div className="flex flex-col items-center text-center">
             <TransparentIcon />

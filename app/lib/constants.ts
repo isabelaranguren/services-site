@@ -11,6 +11,10 @@ export const BUSINESS_INFO = {
     zip: "77095",
     country: "US",
   },
+  brand: {
+    logo: "/logov2.png",
+    logo_white: "/logo-white.png"
+  },
   geo: {
     latitude: "29.7604",
     longitude: "-95.3698",

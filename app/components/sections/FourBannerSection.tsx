@@ -4,39 +4,42 @@ import CollectionItemBanner from "../CollectionItemBanner";
 
 const servicesData = [
   {
-    slug: "commercial-transformation",
-    name: "Commercial Transformation",
-    description: "We believe your space should reflect your unique personality, lifestyle, and vision. Whether it's a cozy home renovation or a bold commercial transformation, we are dedicated to turning your ideas into reality.",
-    imageUrl: "/images/1.jpg", // Correct: Starts with '/'
-    imageAlt: "",
+    slug: "specialty-installations",
+    name: "Tile and Countertop Installation",
+    description:
+      "Transform your space with high-quality tile and countertop installations. Whether you're updating a kitchen or upgrading a commercial space, we deliver clean, precise, and long-lasting results.",
+    imageUrl: "/images/1.jpg",
+    imageAlt: "Tile and countertop installation in a modern kitchen",
     order: "01",
   },
   {
-    slug: "home-renovation",
-    name: "Home Renovation",
-    description: "We believe your space should reflect your unique personality, lifestyle, and vision. Whether it's a cozy home renovation or a bold commercial transformation, we are dedicated to turning your ideas into reality.",
-    imageUrl: "/images/2.jpg", // Correct: Starts with '/'
-    imageAlt: "",
+    slug: "specialty-installations",
+    name: "Backsplash Design and Installation",
+    description:
+      "Add a custom touch to your kitchen or bathroom with our backsplash design and installation services. We combine creativity and attention to detail to match your personal style.",
+    imageUrl: "/images/2.jpg",
+    imageAlt: "Custom backsplash installed in a stylish kitchen",
     order: "02",
   },
   {
-    slug: "backyard-makeovers",
-    name: "Backyard Makeovers",
-    description: "...",
-    imageUrl: "/images/3.jpg", // Correct: Starts with '/'
-    imageAlt: "...",
+    slug: "specialty-installations",
+    name: "Window and Door Replacements",
+    description:
+      "Replace outdated windows and doors with modern, energy-efficient options. We focus on quality craftsmanship and secure installation to enhance both comfort and curb appeal.",
+    imageUrl: "/images/3.jpg",
+    imageAlt: "Newly installed modern front door and window",
     order: "03",
   },
   {
-    slug: "customised-projects",
-    name: "Customised Projects",
-    description: "...",
-    imageUrl: "/images/4.jpg", // Correct: Starts with '/'
-    imageAlt: "...",
+    slug: "specialty-installations",
+    name: "Carpentry",
+    description:
+      "From framing to finishing touches, our carpentry services cover it all. We build custom features that are both functional and visually appealing, tailored to your space.",
+    imageUrl: "/images/4.jpg",
+    imageAlt: "Woodworker crafting custom shelving",
     order: "04",
   },
 ];
-
 export default function FourBannerSection() {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 

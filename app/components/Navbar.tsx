@@ -3,35 +3,105 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { navigationItems } from "@/data/navigation";
-import Button from "./ui/Button";
+import { navigationItems } from "@/data/navigation"; // Assuming this path is correct
+import Button from "./ui/Button"; // Assuming this path is correct
+import { BUSINESS_INFO } from "../lib/constants"; // Assuming this path is correct
 
-const NavBar = () => {
+type NavStyle = "white" | "colored" | "transparent";
+
+interface NavBarProps {
+  initialStyle?: NavStyle; // Make the prop optional with a default
+  bgColor?: string; // Optional: Specify the color for the 'colored' style
+}
+
+const NavBar: React.FC<NavBarProps> = ({
+  initialStyle = "white", // Default to 'white' if no prop is passed
+  // Default color for the 'colored' style - this is what it will transition TO on scroll
+  bgColor = "bg-[#2d3c56]",
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
+  // --- Scroll Effect ---
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // --- Dropdown Logic ---
   const toggleDropdown = (index: number) => {
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
+  // --- Close Menus Logic ---
   const closeMenus = () => {
     setIsOpen(false);
     setOpenDropdown(null);
   };
 
+  // --- Determine Dynamic Classes based on State and Props ---
+  let finalNavClasses = "fixed top-0 w-full z-50 transition-all duration-300 ";
+  let finalTextClasses = "text-sm font-medium ";
+  let finalIconClasses = "";
+  let finalLogoSrc = BUSINESS_INFO.brand.logo; // Default logo
+  let finalButtonVariant: "primary" | "secondary" | "outline-light" = "primary"; // Default button
+
+  if (scrolled) {
+    // --- STYLES WHEN SCROLLED ---
+    // Always use the specified bgColor, white text/icons, white logo, and outline button
+    finalNavClasses += `${bgColor} shadow border-b border-white/20`; // Use specified bgColor, add shadow and subtle border
+    finalTextClasses += "text-white hover:text-gray-200";
+    finalIconClasses = "text-white hover:text-gray-200";
+    finalLogoSrc = BUSINESS_INFO.brand.logo_white; // Use white logo
+    finalButtonVariant = "outline-light"; // Use outline button
+  } else {
+    // --- STYLES WHEN NOT SCROLLED (Top of Page) ---
+    // Apply styles based on the initialStyle prop
+    switch (initialStyle) {
+      case "colored":
+        finalNavClasses += `${bgColor}`; // Use specified bgColor
+        finalTextClasses += "text-white hover:text-gray-200";
+        finalIconClasses = "text-white hover:text-gray-200";
+        finalLogoSrc = BUSINESS_INFO.brand.logo_white;
+        finalButtonVariant = "outline-light";
+        break;
+      case "transparent":
+        finalNavClasses += "bg-transparent";
+        // Assume white text/logo needed over potentially dark background below transparent nav
+        finalTextClasses += "text-white hover:text-gray-200";
+        finalIconClasses = "text-white hover:text-gray-200";
+        finalLogoSrc = BUSINESS_INFO.brand.logo_white; // Use white logo initially
+        finalButtonVariant = "outline-light";
+        break;
+      case "white":
+      default:
+        finalNavClasses += "bg-white";
+        finalTextClasses += "text-gray-700 hover:text-gray-900";
+        finalIconClasses = "text-gray-500 hover:text-gray-900";
+        finalLogoSrc = BUSINESS_INFO.brand.logo; // Use standard logo
+        finalButtonVariant = "primary";
+        // Optional: Add border if needed for white initial state even when not scrolled
+        // finalNavClasses += " border-b border-gray-200";
+        break;
+    }
+  }
+
+  // --- Assign final calculated values ---
+  // (These variables are used directly in the JSX below)
+  const navClasses = finalNavClasses;
+  const textClasses = finalTextClasses;
+  const iconClasses = finalIconClasses;
+  const logoSrc = finalLogoSrc;
+  const buttonVariant = finalButtonVariant;
+
+  // --- Component Return ---
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow border-b border-gray-200" : "bg-white"
-      }`}
-    >
+    <nav className={navClasses}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -41,36 +111,56 @@ const NavBar = () => {
               onClick={closeMenus}
               className="flex items-center gap-2"
             >
-              <Image src="/logo.png" alt="Logo" width={100} height={50} />
+              <div>
+                <Image
+                  src={logoSrc} // Dynamic logo source
+                  alt={BUSINESS_INFO.name}
+                  width={100}
+                  height={40}
+                  style={{ height: "40px", width: "auto" }}
+                  priority
+                />
+              </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center gap-8">
             {navigationItems.map((item, index) => (
-              <div key={index} className="relative">
+              <div key={item.name || index} className="relative">
                 {item.submenu ? (
                   <>
                     <button
                       onClick={() => toggleDropdown(index)}
-                      className="flex items-center gap-1 text-gray-700 hover:text-gray-900 text-sm font-medium"
+                      className={`flex items-center gap-1 ${textClasses}`} // Dynamic text classes
+                      aria-haspopup="true"
+                      aria-expanded={openDropdown === index}
                     >
                       {item.name}
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform ${
+                        className={`h-4 w-4 transition-transform duration-200 ${
                           openDropdown === index ? "rotate-180" : ""
-                        }`}
+                        } `}
+                        aria-hidden="true"
+                        style={{ color: "currentColor" }} // Inherit text color
                       />
                     </button>
+                    {/* Dropdown always white */}
                     {openDropdown === index && (
-                      <div className="absolute mt-2 w-64 bg-white shadow border border-gray-200">
-                        <div className="flex flex-col">
+                      <div className="absolute left-0 mt-2 w-64 origin-top-left bg-white shadow-lg border border-gray-200 rounded-md ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <div
+                          className="py-1"
+                          role="menu"
+                          aria-orientation="vertical"
+                          aria-labelledby="options-menu"
+                        >
                           {item.submenu.map((subitem, subindex) => (
                             <Link
-                              key={subindex}
+                              key={subitem.name || subindex}
                               href={subitem.href}
-                              onClick={() => setOpenDropdown(null)}
-                              className="block px-5 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                              onClick={closeMenus}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                              role="menuitem"
                             >
                               {subitem.name}
                             </Link>
@@ -82,7 +172,8 @@ const NavBar = () => {
                 ) : (
                   <Link
                     href={item.href}
-                    className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+                    className={textClasses} // Dynamic text classes
+                    onClick={() => setOpenDropdown(null)}
                   >
                     {item.name}
                   </Link>
@@ -93,52 +184,63 @@ const NavBar = () => {
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="primary">Contact Us</Button>
+            <Button variant={buttonVariant} onClick={closeMenus}>
+              {" "}
+              {/* Dynamic button variant */}
+              Contact Us
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-gray-500 hover:text-gray-900"
+              className={`p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ${iconClasses}`} // Dynamic icon classes
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen}
             >
+              <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <X className="h-6 w-6" />
+                <X className="block h-6 w-6" aria-hidden="true" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Always white background for readability */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow border-t border-gray-200">
-          <div className="px-4 py-4 space-y-3">
+        <div
+          className="md:hidden bg-white shadow-lg border-t border-gray-200"
+          id="mobile-menu"
+        >
+          <div className="px-4 pt-2 pb-4 space-y-3 sm:px-6">
+            {/* Mobile Nav Items */}
             {navigationItems.map((item, index) => (
-              <div key={index}>
+              <div key={`mobile-${item.name || index}`}>
                 {item.submenu ? (
                   <>
                     <button
                       onClick={() => toggleDropdown(index)}
-                      className="flex w-full items-center justify-between text-gray-700 hover:text-gray-900 text-base"
+                      className="flex w-full items-center justify-between py-2 text-gray-700 hover:text-gray-900 text-base font-medium rounded-md"
                     >
                       {item.name}
                       <ChevronDown
-                        className={`h-5 w-5 transition-transform ${
+                        className={`h-5 w-5 transition-transform text-gray-500 ${
                           openDropdown === index ? "rotate-180" : ""
                         }`}
                       />
                     </button>
                     {openDropdown === index && (
-                      <div className="pl-4 mt-2 flex flex-col border-l border-gray-200">
+                      <div className="pl-4 mt-1 space-y-1 flex flex-col border-l border-gray-200">
                         {item.submenu.map((subitem, subindex) => (
                           <Link
-                            key={subindex}
+                            key={`mobile-sub-${subitem.name || subindex}`}
                             href={subitem.href}
                             onClick={closeMenus}
-                            className="block py-2 text-gray-700 hover:text-gray-900 text-base"
+                            className="block py-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 text-base rounded-md px-3"
                           >
                             {subitem.name}
                           </Link>
@@ -150,13 +252,14 @@ const NavBar = () => {
                   <Link
                     href={item.href}
                     onClick={closeMenus}
-                    className="block text-gray-700 hover:text-gray-900 text-base"
+                    className="block py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 text-base font-medium rounded-md px-3"
                   >
                     {item.name}
                   </Link>
                 )}
               </div>
             ))}
+            {/* Mobile Action Button */}
             <div className="pt-4 border-t border-gray-200">
               <Button variant="primary" className="w-full" onClick={closeMenus}>
                 Contact Us
