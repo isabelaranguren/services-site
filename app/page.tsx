@@ -1,15 +1,16 @@
-import Button from "./components/ui/Button";
-import { faqsData } from "@/data/faqs"; // Import the data
-import FAQAccordion from "./components/faq/FAQAccordion";
-import FullWidthImage from "./components/FullWidthImage";
+import FAQAccordion from "@/components/faq/FAQAccordion";
+import FullWidthImage from "@/components/FullWidthImage";
+import PageHeroII from "@/components/Hero/PageHeroII";
+import NavBar from "@/components/layout/Navbar";
+import MovingBanner from "@/components/MovingBanner";
+import FourBannerSection from "@/components/sections/FourBannerSection";
+import ProjectCardsSection from "@/components/sections/ProjectCardsSection";
+import SideBySide from "@/components/sections/SideBySide";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import Button from "@/components/ui/Button";
+import { faqsData } from "@/data/faqs"; 
 import heroImage from "@/public/hero1.webp";
-import FourBannerSection from "./components/sections/FourBannerSection";
-import PageHeroII from "./components/PageHeroII";
-import MovingBanner from "./components/MovingBanner";
-import SideBySide from "./components/sections/SideBySide";
-import ProjectCardsSection from "./components/sections/ProjectCardsSection";
-import WhyChooseUs from "./components/sections/WhyChooseUs";
-import NavBar from "./components/Navbar";
+
 
 export default function Home() {
   return (

@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
-import NavBar from "./components/Navbar";
-import Footer from "./components/layout/Footer";
-import { localBusinessSchema } from "./lib/schema";
+import { localBusinessSchema } from "@/lib/schema";
+import Footer from "@/components/layout/Footer";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 

@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { navigationItems } from "@/data/navigation"; // Assuming this path is correct
-import Button from "./ui/Button"; // Assuming this path is correct
-import { BUSINESS_INFO } from "../lib/constants"; // Assuming this path is correct
+import { navigationItems } from "@/data/navigation";
+import Button from "@/components/ui/Button";
+import { BUSINESS_INFO } from "@/lib/constants";
 
 type NavStyle = "white" | "colored" | "transparent";
 

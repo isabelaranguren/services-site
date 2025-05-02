@@ -1,7 +1,8 @@
-import NavBar from "../components/Navbar";
-import PageHero from "../components/PageHero";
-import PictureGrid from "../components/PictureGrid";
-import ContactSection from "../components/sections/ContactSection";
+import PageHero from "@/components/Hero/PageHero";
+import NavBar from "@/components/layout/Navbar";
+import PictureGrid from "@/components/PictureGrid";
+import ContactSection from "@/components/sections/ContactSection";
+
 
 export const metadata = {
   title: "Contact Us",

@@ -1,14 +1,12 @@
-import FullWidthImage from "../components/FullWidthImage";
-import PageHeroII from "../components/PageHeroII";
-import PictureGrid from "../components/PictureGrid";
-import AboutSection from "../components/sections/AboutSection";
 import heroImage from "@/public/hero.jpg";
-import WhyChooseUs from "../components/sections/WhyChooseUs";
-import FAQAccordion from "../components/faq/FAQAccordion";
 import { faqsData } from "@/data/faqs";
-import NavBar from "../components/Navbar";
-import PageHeroIII from "../components/PageHeroIII";
-
+import NavBar from "@/components/layout/Navbar";
+import PageHeroIII from "@/components/Hero/PageHeroIII";
+import AboutSection from "@/components/sections/AboutSection";
+import FullWidthImage from "@/components/FullWidthImage";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import FAQAccordion from "@/components/faq/FAQAccordion";
+import PictureGrid from "@/components/PictureGrid";
 
 export const metadata = {
   title: "About Us",

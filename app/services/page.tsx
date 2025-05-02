@@ -1,7 +1,7 @@
+import PageHeroII from "@/components/Hero/PageHeroII";
+import NavBar from "@/components/layout/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeroII from "../components/PageHeroII";
-import NavBar from "../components/Navbar";
 
 const featuredProject = {
   slug: "workplace-wonders",

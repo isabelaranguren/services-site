@@ -1,7 +1,6 @@
+import PageHeroIII from '@/components/Hero/PageHeroIII';
+import NavBar from '@/components/layout/Navbar';
 import React from 'react'
-import PageHeroIII from '../components/PageHeroIII';
-import NavBar from '../components/Navbar';
-import BlogPostCard from '../components/BlogPostCard';
 
 export const metadata = {
   title: "Blog",

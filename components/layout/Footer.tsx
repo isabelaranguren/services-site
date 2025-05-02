@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { BUSINESS_INFO } from "@/app/lib/constants";
+import { BUSINESS_INFO } from "@/lib/constants";
 
 const Footer = () => {
   return (

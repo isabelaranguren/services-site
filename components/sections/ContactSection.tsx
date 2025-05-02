@@ -1,5 +1,5 @@
 "use client";
-import { BUSINESS_INFO } from "@/app/lib/constants";
+import { BUSINESS_INFO } from "@/lib/constants";
 import React, { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { toast } from "react-hot-toast";
