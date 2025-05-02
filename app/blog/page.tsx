@@ -1,3 +1,4 @@
+import BlogPostCard from '@/components/BlogPostCard';
 import PageHeroIII from '@/components/Hero/PageHeroIII';
 import NavBar from '@/components/layout/Navbar';
 import React from 'react'
@@ -91,18 +92,17 @@ const Blog = () => {
           {/* Adjust max-w-* and px-* as needed */}
           {postsData.length > 0 ? (
             // Corresponds to .blog-collection-grid
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+            (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
               {" "}
               {/* Adjust gap-* */}
               {postsData.map((post) => (
                 <BlogPostCard key={post.slug} post={post} />
               ))}
-            </div>
+            </div>)
           ) : (
             // Corresponds to .w-dyn-empty or similar
-            <div className="text-center text-paragraph-gray py-10">
-              No blog posts found.
-            </div>
+            (<div className="text-center text-paragraph-gray py-10">No blog posts found.
+                          </div>)
           )}
           {/* TODO: Add Pagination component here if needed */}
           {/* <div className="mt-16 flex justify-center"> ... pagination ... </div> */}

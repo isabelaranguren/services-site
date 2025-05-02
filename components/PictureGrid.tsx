@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 
 const imageUrls = [
-  "/images/1.jpg", 
-  "/images/2.jpg", 
-  "/images/3.jpg", 
-  "/images/4.jpg", 
+  "/images/1.jpg",
+  "/images/2.jpg",
+  "/images/3.jpg",
+  "/images/4.jpg",
 ];
 
 interface PictureItemProp {
@@ -14,10 +14,7 @@ interface PictureItemProp {
   href?: string;
 }
 
-const PictureItem: React.FC<PictureItemProp> = ({
-  imageUrl,
-  href = "#",
-}) => {
+const PictureItem: React.FC<PictureItemProp> = ({ imageUrl, href = "#" }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -39,10 +36,8 @@ const PictureItem: React.FC<PictureItemProp> = ({
       <div
         className={`relative z-10 flex items-center justify-center p-4 transition-opacity duration-300 ${
           isHovered ? "opacity-100" : "opacity-0"
-        }`} 
-      >
-      
-      </div>
+        }`}
+      ></div>
     </Link>
   );
 };
@@ -50,7 +45,6 @@ const PictureItem: React.FC<PictureItemProp> = ({
 const PictureGrid = () => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4">
-
       {imageUrls.map((url, index) => (
         <PictureItem
           key={index}

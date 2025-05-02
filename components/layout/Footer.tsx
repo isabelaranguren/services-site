@@ -1,6 +1,6 @@
+import { BUSINESS_INFO } from "@/lib/constants";
 import Link from "next/link";
 import React from "react";
-import { BUSINESS_INFO } from "@/lib/constants";
 
 const Footer = () => {
   return (

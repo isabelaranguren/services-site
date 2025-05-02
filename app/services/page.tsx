@@ -6,7 +6,7 @@ import Link from "next/link";
 const featuredProject = {
   slug: "workplace-wonders",
   title: "Workplace Wonders",
-  imageUrl: "/images/1.jpg", 
+  imageUrl: "/images/1.jpg",
   description:
     "We believe your space should reflect your unique personality, lifestyle, and vision. Whether it's a cozy home renovation or a bold commercial transformation, we are dedicated to turning your ideas into reality.",
 };
@@ -71,7 +71,6 @@ function ProjectCard({
   featured?: boolean;
 }) {
   return (
-
     <Link
       href={`/projects/${project.slug}`}
       className="relative block overflow-hidden group bg-gray-900 h-full" // Keep relative and group
@@ -143,14 +142,14 @@ function ProjectCard({
 
 export const metadata = {
   title: "Services",
-  description: "Explore the remodeling services we offer in Houston, including kitchens, bathrooms, basements, home additions, and more. See how Lake Property Solutions can help with your next project."
+  description:
+    "Explore the remodeling services we offer in Houston, including kitchens, bathrooms, basements, home additions, and more. See how Lake Property Solutions can help with your next project.",
 };
-
 
 function Services() {
   return (
     <>
-    <NavBar/>
+      <NavBar />
       <PageHeroII
         preTitle="/ Projects /"
         title="Reflect your lifestyle, and vision."

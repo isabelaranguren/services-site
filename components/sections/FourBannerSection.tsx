@@ -4,7 +4,7 @@ import CollectionItemBanner from "../CollectionItemBanner";
 
 const servicesData = [
   {
-    slug: "specialty-installations",
+    slug: "tile-counter-installation",
     name: "Tile and Countertop Installation",
     description:
       "Transform your space with high-quality tile and countertop installations. Whether you're updating a kitchen or upgrading a commercial space, we deliver clean, precise, and long-lasting results.",
@@ -13,7 +13,7 @@ const servicesData = [
     order: "01",
   },
   {
-    slug: "specialty-installations",
+    slug: "backsplash-installation",
     name: "Backsplash Design and Installation",
     description:
       "Add a custom touch to your kitchen or bathroom with our backsplash design and installation services. We combine creativity and attention to detail to match your personal style.",
@@ -22,7 +22,7 @@ const servicesData = [
     order: "02",
   },
   {
-    slug: "specialty-installations",
+    slug: "window-door-replacements",
     name: "Window and Door Replacements",
     description:
       "Replace outdated windows and doors with modern, energy-efficient options. We focus on quality craftsmanship and secure installation to enhance both comfort and curb appeal.",
@@ -31,7 +31,7 @@ const servicesData = [
     order: "03",
   },
   {
-    slug: "specialty-installations",
+    slug: "carpentry",
     name: "Carpentry",
     description:
       "From framing to finishing touches, our carpentry services cover it all. We build custom features that are both functional and visually appealing, tailored to your space.",
