@@ -35,19 +35,15 @@ const stripHtml = (html: string | null | undefined): string => {
     .trim();
 };
 
-// The Blog component now needs to be async to fetch data
 const Blog = async () => {
   // Fetch posts from WordPress
   const fetchedPosts: FetchedPost[] = await getAllPosts();
 
-  // Function to adapt fetched post data to what BlogPostCard expects (PostData interface)
   const adaptPostDataForCard = (post: FetchedPost): PostData => {
     return {
-      // Required fields for PostData
       slug: post.slug,
       title: post.title,
 
-      // Optional fields for PostData, mapping from FetchedPost
       date: post.date, // Pass the date string directly, card handles formatting
       summary: stripHtml(post.excerpt), // Clean the excerpt for summary
       imageUrl: post.featuredImage?.node?.sourceUrl, // Pass URL or undefined, card handles placeholder
@@ -66,12 +62,10 @@ const Blog = async () => {
         imageUrl="/images/services-hero-bg.jpg"
       />
       <section className="bg-primary-light py-16 md:py-20 lg:py-32">
-        <div className="max-w-screen-xl mx-auto px-4">
+        <div className="max-w-screen-lg mx-auto px-4">
           {fetchedPosts && fetchedPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
               {fetchedPosts.map((post) => (
-                // Use the fetched post's unique ID from WordPress as the key
-                // Adapt the fetched post data before passing it to the card
                 <BlogPostCard key={post.id} post={adaptPostDataForCard(post)} />
               ))}
             </div>
