@@ -1,14 +1,12 @@
-import FAQAccordion from "@/components/faq/FAQAccordion";
 import FullWidthImage from "@/components/FullWidthImage";
 import PageHeroII from "@/components/Hero/PageHeroII";
 import NavBar from "@/components/layout/Navbar";
 import MovingBanner from "@/components/MovingBanner";
 import FourBannerSection from "@/components/sections/FourBannerSection";
-import ProjectCardsSection from "@/components/sections/ProjectCardsSection";
+import ParallaxCTA from "@/components/sections/ParallaxCTA";
 import SideBySide from "@/components/sections/SideBySide";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Button from "@/components/ui/Button";
-import { faqsData } from "@/data/faqs"; 
 import heroImage from "@/public/hero1.webp";
 
 
@@ -57,20 +55,17 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ProjectCardsSection />
       <FourBannerSection />
       <WhyChooseUs />
-
-      <div className="container mx-auto px-6 md:px-12 py-16 md:py-24">
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full md:w-3/10 px-4">
-            <span className="text-gray-900">/ FAQS /</span>
-          </div>
-          <div className="w-full md:w-7/10 px-4">
-            <FAQAccordion faqs={faqsData} />
-          </div>
-        </div>
-      </div>
+      <section className="pt-40 pb-32 relative">
+        <div
+          className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
+          style={{ backgroundImage: "url(https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/71fe09e2-9320-4f61-8eca-067243e2ef68.jpeg)" }}
+        ></div>
+        <h2 className="text-white display-2 text-center relative">
+          Parallax Header
+        </h2>
+      </section>
     </>
   );
 }

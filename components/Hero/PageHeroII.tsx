@@ -29,7 +29,7 @@ const PageHeroII: React.FC<PageHeroIIProps> = ({
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
         <div className="w-full md:w-3/5">
           {preTitle && (
-            <p className="text-sm text-indigo-600 font-semibold uppercase tracking-wider mb-2">
+            <p className="text-sm text-red-700 font-semibold uppercase tracking-wider mb-2">
               {preTitle}
             </p>
           )}

@@ -19,7 +19,6 @@ const CollectionItemBanner = ({ service }: { service: Service }) => {
 
   return (
     <div className="relative w-full h-full overflow-hidden">
- 
       {isValidImageUrl && (
         <Image
           src={currentService.imageUrl!}
@@ -30,9 +29,7 @@ const CollectionItemBanner = ({ service }: { service: Service }) => {
           loading="lazy"
         />
       )}
-      <div
-        className="absolute inset-0 flex flex-col justify-center items-center p-10 md:p-15 lg:p-[60px] bg-black/50 group-hover:bg-black/60 transition-colors duration-300 ease-in-out"
-      >
+      <div className="absolute inset-0 flex flex-col justify-center items-center p-10 md:p-15 lg:p-[60px] bg-black/50 group-hover:bg-black/60 transition-colors duration-300 ease-in-out">
         <div
           className="
             flex flex-col items-center text-center max-w-md lg:max-w-[400px]
@@ -66,7 +63,10 @@ const CollectionItemBanner = ({ service }: { service: Service }) => {
           </div>
         </div>
 
-        <div className="absolute top-[4%] right-[30px] text-white text-right tracking-widest min-w-[340px] h-5 transform -rotate-90 origin-top-right hidden lg:block">
+        <div
+          className="absolute top-[4%] right-[30px] text-white text-right text-3xl
+ tracking-widest min-w-[340px] h-5 transform -rotate-90 origin-top-right hidden lg:block"
+        >
           {currentService.name} / {currentService.order} /
         </div>
       </div>

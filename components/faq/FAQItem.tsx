@@ -25,7 +25,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
           .replace(/\s+/g, "-")
           .toLowerCase()}`}
       >
-        <span className="text-lg font-bold text-gray-900 ">
+        <span className="text-xl font-bold uppercase text-gray-900 ">
           {question}
         </span>
         <span className="ml-6 flex items-center">

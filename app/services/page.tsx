@@ -4,56 +4,48 @@ import Image from "next/image";
 import Link from "next/link";
 
 const featuredProject = {
-  slug: "workplace-wonders",
-  title: "Workplace Wonders",
-  imageUrl: "/images/1.jpg",
+  slug: "interior-design",
+  title: "Interior Design",
   description:
-    "We believe your space should reflect your unique personality, lifestyle, and vision. Whether it's a cozy home renovation or a bold commercial transformation, we are dedicated to turning your ideas into reality.",
+    "Bring your vision to life with personalized interior design services. We create stylish, cohesive spaces that reflect your taste and optimize comfort, lighting, and layout.",
+  imageUrl: "/images/interior-design.jpg",
+  imageAlt: "Modern living room with thoughtfully arranged furniture",
 };
 
 const otherProjects = [
   {
+    slug: "bathroon-remodeling",
+    title: "Bathroom Remodeling",
+    description:
+      "Upgrade your bathroom into a relaxing and modern retreat with expert tilework, sleek countertops, and stylish finishes. We handle every detail to ensure a clean, functional, and elegant transformation.",
+    imageUrl: "/images/bathroom-1.jpg",
+    imageAlt: "Tile and countertop installation in a modern bathroom",
+  },
+  {
     slug: "kitchen-remodeling",
     title: "Kitchen Remodeling",
-    imageUrl: "/images/1.jpg",
     description:
-      "With years of experience, and a commitment to quality, we take pride in creating spaces that inspire.",
+      "Revamp your kitchen with tailored layouts, updated cabinetry, premium surfaces, and beautiful backsplashes. Our remodeling services blend function and flair to create your dream cooking space.",
+    imageUrl: "/images/kitchen.jpg",
+    imageAlt: "Custom backsplash installed in a stylish kitchen",
   },
   {
-    slug: "basement-finishing",
-    title: "Basement Finishing",
-    imageUrl: "/images/2.jpg",
+    slug: "Painting",
+    title: "Painting",
     description:
-      "We believe your space should reflect your unique personality, lifestyle, and vision.",
+      "Refresh your interiors or exteriors with professional painting services. We use high-quality paints and expert techniques to deliver smooth, lasting finishes that elevate your space.",
+    imageUrl: "/images/painting.jpg",
+    imageAlt: "Freshly painted interior with modern color palette",
   },
   {
-    slug: "bathroon-renovation",
-    title: "Bathroom Renovation",
-    imageUrl: "/images/bathroom-reno.jpg",
+    slug: "Flooring",
+    title: "Flooring",
     description:
-      "Dedicated to turning your ideas into reality, whether it's a cozy home renovation or a bold commercial transformation.",
+      "Enhance your home with durable and beautiful flooring options—from hardwood to luxury vinyl. We ensure flawless installation that complements your interior design and stands the test of time.",
+    imageUrl: "/images/floors.jpg",
+    imageAlt: "New wood flooring being installed in a living room",
   },
-  {
-    slug: "home-reno",
-    title: "Home Renovation",
-    imageUrl: "/images/2.jpg",
-    description:
-      "Creating spaces that inspire through craftsmanship, communication, and attention to detail.",
-  },
-  {
-    slug: "home-additions",
-    title: "Home Additions",
-    imageUrl: "/images/3.jpg",
-    description:
-      "Creating spaces that inspire through craftsmanship, communication, and attention to detail.",
-  },
-  {
-    slug: "urban-oasis",
-    title: "Urban Oasis",
-    imageUrl: "/images/4.jpg",
-    description:
-      "We specialize in residential and commercial renovations. With years of experience...",
-  },
+  
 ];
 
 interface Project {

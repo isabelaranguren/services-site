@@ -20,12 +20,10 @@ const SideBySide = () => {
         </div>
         <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16 py-16 lg:py-24">
           <div className="text-left">
-            <div className="flex items-center gap-2 text-gray-500 mb-4">
-              <span className="text-lg font-light">/</span>
+            <div className="flex items-center gap-2 text-red-700 mb-4">
               <h6 className="text-base font-medium uppercase tracking-wider">
-                About
+                / About /
               </h6>
-              <span className="text-lg font-light">/</span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-5 leading-tight">

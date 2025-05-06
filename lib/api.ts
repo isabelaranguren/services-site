@@ -46,12 +46,64 @@ export async function getAllCategories(): Promise<Category[]> {
   }
 }
 
-// Helper function to sanitize WordPress content
+
 export function sanitizeContent(content: string): string {
   if (!content) return "";
 
-  // You may need more comprehensive sanitization based on your needs
-  return content
-    .replace(/<!--(.|\s)*?-->/g, "") // Remove HTML comments
-    .replace(/\[.*?\]/g, ""); // Remove shortcodes
+  let sanitized = content;
+
+  sanitized = sanitized.replace(
+    /class="wp-image-\d+"/g,
+    'class="rounded-lg shadow-md w-full h-auto"'
+  );
+
+  sanitized = sanitized.replace(
+    /class="aligncenter"/g,
+    'class="mx-auto block"'
+  );
+
+  sanitized = sanitized.replace(
+    /class="alignleft"/g,
+    'class="float-left mr-4 mb-4"'
+  );
+
+  sanitized = sanitized.replace(
+    /class="alignright"/g,
+    'class="float-right ml-4 mb-4"'
+  );
+
+  // Fix WordPress captions
+  sanitized = sanitized.replace(
+    /<figcaption class="wp-element-caption">(.*?)<\/figcaption>/g,
+    '<figcaption class="text-center text-sm text-gray-500 mt-2">$1</figcaption>'
+  );
+
+  // Handle WordPress galleries
+  sanitized = sanitized.replace(
+    /<ul class="wp-block-gallery.*?>(.*?)<\/ul>/gs,
+    '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">$1</div>'
+  );
+
+  // Fix problematic elements that could break layout
+  // Remove width/height attributes from images
+  sanitized = sanitized.replace(/<img (.*?)width="(\d+)"(.*?)>/g, "<img $1$3>");
+
+  sanitized = sanitized.replace(
+    /<img (.*?)height="(\d+)"(.*?)>/g,
+    "<img $1$3>"
+  );
+
+  // Fix WordPress tables
+  sanitized = sanitized.replace(
+    /<table>/g,
+    '<table class="w-full border-collapse my-6">'
+  );
+
+  sanitized = sanitized.replace(
+    /<tr>/g,
+    '<tr class="border-b border-gray-300">'
+  );
+
+
+  return sanitized;
 }
