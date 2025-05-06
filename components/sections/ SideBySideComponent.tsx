@@ -74,7 +74,7 @@ const SideBySideComponent: React.FC<SideBySideProps> = ({
         <div className="w-full md:w-1/2">
           {/* Optional pretitle */}
           {pretitle && (
-            <div className="text-gray-500 mb-4">
+            <div className="text-red-700 mb-4">
               <h6 className="text-base font-medium uppercase tracking-wider"> 
                 / {pretitle} /
               </h6>

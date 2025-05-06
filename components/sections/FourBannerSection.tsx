@@ -34,7 +34,7 @@ const servicesData = [
     name: "Flooring",
     description:
       "Enhance your home with durable and beautiful flooring options—from hardwood to luxury vinyl. We ensure flawless installation that complements your interior design and stands the test of time.",
-    imageUrl: "/images/floors.jpg",
+    imageUrl: "/floors.jpg",
     imageAlt: "New wood flooring being installed in a living room",
     order: "04",
   },

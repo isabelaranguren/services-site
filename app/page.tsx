@@ -3,7 +3,6 @@ import PageHeroII from "@/components/Hero/PageHeroII";
 import NavBar from "@/components/layout/Navbar";
 import MovingBanner from "@/components/MovingBanner";
 import FourBannerSection from "@/components/sections/FourBannerSection";
-import ParallaxCTA from "@/components/sections/ParallaxCTA";
 import SideBySide from "@/components/sections/SideBySide";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Button from "@/components/ui/Button";
@@ -57,14 +56,23 @@ export default function Home() {
       </div>
       <FourBannerSection />
       <WhyChooseUs />
-      <section className="pt-40 pb-32 relative">
+
+      <section className="relative py-40">
         <div
-          className="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
-          style={{ backgroundImage: "url(https://d1pnnwteuly8z3.cloudfront.net/images/dafc1e05-b0e8-4c6d-b375-4a62333bbd5a/71fe09e2-9320-4f61-8eca-067243e2ef68.jpeg)" }}
+          className="absolute inset-0 bg-cover bg-center bg-fixed z-0 will-change-transform"
+          style={{ backgroundImage: "url(/parallax.jpg)" }}
         ></div>
-        <h2 className="text-white display-2 text-center relative">
-          Parallax Header
-        </h2>
+        <div className="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-white text-3xl sm:text-5xl lg:text-4xl font-semibold leading-tight mb-6">
+            Don’t See What You’re Looking For? Just Ask.
+          </h2>
+          <p className="text-white text-lg sm:text-xl leading-relaxed">
+            If there’s a service you need that isn’t mentioned here, feel free
+            to reach out. Our team is experienced, adaptable, and ready to help
+            with custom work or special requests to make your vision a reality.
+          </p>
+        </div>
       </section>
     </>
   );

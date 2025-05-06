@@ -33,9 +33,9 @@ const PageHeroII: React.FC<PageHeroIIProps> = ({
               {preTitle}
             </p>
           )}
-          <h1 className="text-gray-900 text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight whitespace-pre-line">
+          <h2 className="text-gray-900 text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight whitespace-pre-line">
             {title}
-          </h1>
+          </h2>
         </div>
         <div className="w-full md:w-2/5">
           <p className="text-gray-700 mb-6">{description}</p>

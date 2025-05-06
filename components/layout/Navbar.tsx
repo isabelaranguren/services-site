@@ -3,27 +3,25 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { navigationItems } from "@/data/navigation"; // Assuming this path is correct
+import { navigationItems } from "@/data/navigation"; 
 import { BUSINESS_INFO } from "@/lib/constants";
 import Button from "../ui/Button";
 
 type NavStyle = "white" | "colored" | "transparent";
 
 interface NavBarProps {
-  initialStyle?: NavStyle; // Make the prop optional with a default
-  bgColor?: string; // Optional: Specify the color for the 'colored' style
+  initialStyle?: NavStyle; 
+  bgColor?: string; 
 }
 
 const NavBar: React.FC<NavBarProps> = ({
   initialStyle = "white", // Default to 'white' if no prop is passed
-  // Default color for the 'colored' style - this is what it will transition TO on scroll
   bgColor = "bg-[#2d3c56]",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
-  // --- Scroll Effect ---
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -38,13 +36,11 @@ const NavBar: React.FC<NavBarProps> = ({
     setOpenDropdown(openDropdown === index ? null : index);
   };
 
-  // --- Close Menus Logic ---
   const closeMenus = () => {
     setIsOpen(false);
     setOpenDropdown(null);
   };
 
-  // --- Determine Dynamic Classes based on State and Props ---
   let finalNavClasses = "fixed top-0 w-full z-50 transition-all duration-300 ";
   let finalTextClasses = "text-sm font-medium ";
   let finalIconClasses = "";
@@ -52,16 +48,12 @@ const NavBar: React.FC<NavBarProps> = ({
   let finalButtonVariant: "primary" | "secondary" | "outline-light" = "primary"; // Default button
 
   if (scrolled) {
-    // --- STYLES WHEN SCROLLED ---
-    // Always use the specified bgColor, white text/icons, white logo, and outline button
     finalNavClasses += `${bgColor} shadow border-b border-white/20`; // Use specified bgColor, add shadow and subtle border
     finalTextClasses += "text-white hover:text-gray-200";
     finalIconClasses = "text-white hover:text-gray-200";
     finalLogoSrc = BUSINESS_INFO.brand.logo_white; // Use white logo
     finalButtonVariant = "outline-light"; // Use outline button
   } else {
-    // --- STYLES WHEN NOT SCROLLED (Top of Page) ---
-    // Apply styles based on the initialStyle prop
     switch (initialStyle) {
       case "colored":
         finalNavClasses += `${bgColor}`; // Use specified bgColor
@@ -72,7 +64,6 @@ const NavBar: React.FC<NavBarProps> = ({
         break;
       case "transparent":
         finalNavClasses += "bg-transparent";
-        // Assume white text/logo needed over potentially dark background below transparent nav
         finalTextClasses += "text-white hover:text-gray-200";
         finalIconClasses = "text-white hover:text-gray-200";
         finalLogoSrc = BUSINESS_INFO.brand.logo_white; // Use white logo initially
@@ -85,14 +76,10 @@ const NavBar: React.FC<NavBarProps> = ({
         finalIconClasses = "text-gray-500 hover:text-gray-900";
         finalLogoSrc = BUSINESS_INFO.brand.logo; // Use standard logo
         finalButtonVariant = "primary";
-        // Optional: Add border if needed for white initial state even when not scrolled
-        // finalNavClasses += " border-b border-gray-200";
         break;
     }
   }
 
-  // --- Assign final calculated values ---
-  // (These variables are used directly in the JSX below)
   const navClasses = finalNavClasses;
   const textClasses = finalTextClasses;
   const iconClasses = finalIconClasses;
@@ -184,11 +171,9 @@ const NavBar: React.FC<NavBarProps> = ({
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant={buttonVariant} onClick={closeMenus}>
-              {" "}
-              {/* Dynamic button variant */}
-              Contact Us
-            </Button>
+            <Link href={`tel:${BUSINESS_INFO.phone}`} className="text-white bg-red-700 hover:bg-red-800 px-4 py--2">
+             Give Us a Call
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

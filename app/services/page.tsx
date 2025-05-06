@@ -42,7 +42,7 @@ const otherProjects = [
     title: "Flooring",
     description:
       "Enhance your home with durable and beautiful flooring options—from hardwood to luxury vinyl. We ensure flawless installation that complements your interior design and stands the test of time.",
-    imageUrl: "/images/floors.jpg",
+    imageUrl: "/floors.jpg",
     imageAlt: "New wood flooring being installed in a living room",
   },
   
@@ -76,11 +76,8 @@ function ProjectCard({
         sizes={featured ? "100vw" : "(max-width: 640px) 100vw, 50vw"}
         priority={featured}
       />
-      {/* Overlay */}
-      {/* Using the last specified overlay: black with 50% opacity */}
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
 
-      {/* Text Content Wrapper - Using styles from previous step */}
       <div className="absolute bottom-0 left-0 z-20 mb-10 ml-10 mr-10 max-w-xl">
         <h3
           className={`font-semibold text-white
