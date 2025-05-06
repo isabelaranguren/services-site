@@ -40,9 +40,7 @@ export default async function BlogPostPage({ params }: Props) {
     ? format(new Date(post.date), "MMMM d, yyyy")
     : "Date Unavailable";
 
-  const categorySlug = post.categories?.nodes?.[0]?.slug || "uncategorized";
   const categoryName = post.categories?.nodes?.[0]?.name || "Uncategorized";
-  const categoryUrl = `/blog/category/${categorySlug}`;
 
   return (
     <>
@@ -52,17 +50,14 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="flex flex-col items-center max-w-screen-md lg:max-w-screen-lg mx-auto">
             {categoryName}
 
-            {/* Post Title */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-center text-text-dark max-w-4xl mx-auto">
               {post.title}
             </h1>
 
-            {/* Date */}
             <p className="text-center text-base text-paragraph-gray mt-4 mb-8 md:mt-5 md:mb-10">
               {formattedDate}
             </p>
 
-            {/* Featured Image */}
             {post.featuredImage?.node?.sourceUrl && (
               <div className="relative w-full aspect-video md:aspect-[2/1] lg:h-[550px] max-h-[680px] mb-8 md:mb-12 lg:mb-16 overflow-hidden rounded-lg shadow-md">
                 <Image
@@ -79,7 +74,6 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             )}
 
-            {/* Rich Text Content Area - Apply Typography styles */}
             <article
               className="prose prose-lg lg:prose-xl max-w-none w-full
                 prose-headings:text-text-dark prose-headings:font-semibold
@@ -92,11 +86,9 @@ export default async function BlogPostPage({ params }: Props) {
                 prose-table:border-collapse prose-td:border prose-td:border-gray-300 prose-td:p-2
                 prose-th:border prose-th:border-gray-300 prose-th:p-2 prose-th:bg-gray-100"
             >
-              {/* Render sanitized HTML content */}
               <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
             </article>
 
-            {/* Back to Blog Link */}
             <div className="mt-12 text-center">
               <Link
                 href="/blog"

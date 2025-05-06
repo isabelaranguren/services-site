@@ -12,7 +12,6 @@ module.exports = {
         "paragraph-gray": "#535353",
         primary: "#d2c3b2",
         "primary-light": "#f8f4f0",
-        dark: "#241c18",
         "base-gray": "#e9e9e9",
         "light-gray": "#f9f9fa",
         "dark-gray": "#afafaf",

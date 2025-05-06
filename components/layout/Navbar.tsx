@@ -3,15 +3,15 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { navigationItems } from "@/data/navigation"; 
+import { navigationItems } from "@/data/navigation";
 import { BUSINESS_INFO } from "@/lib/constants";
 import Button from "../ui/Button";
 
 type NavStyle = "white" | "colored" | "transparent";
 
 interface NavBarProps {
-  initialStyle?: NavStyle; 
-  bgColor?: string; 
+  initialStyle?: NavStyle;
+  bgColor?: string;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
@@ -171,8 +171,11 @@ const NavBar: React.FC<NavBarProps> = ({
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Link href={`tel:${BUSINESS_INFO.phone}`} className="text-white bg-red-700 hover:bg-red-800 px-4 py--2">
-             Give Us a Call
+            <Link
+              href={`tel:${BUSINESS_INFO.phone}`}
+              className="text-white bg-red-700 hover:bg-red-800 px-4 py--2"
+            >
+              Give Us a Call
             </Link>
           </div>
 
