@@ -167,12 +167,12 @@ const NavBar: React.FC<NavBarProps> = ({
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
+            <Button
+              variant="primary"
               href={`tel:${BUSINESS_INFO.phone}`}
-              className="text-white bg-red-700 hover:bg-red-800 px-4 py--2"
             >
               Give Us a Call
-            </Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}

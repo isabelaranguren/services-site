@@ -117,10 +117,7 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
 
   return (
     <div ref={containerRef} className="relative block overflow-hidden group bg-gray-900 h-full">
-      <Link
-        href={`/projects/${project.slug}`}
-        className="relative block overflow-hidden group bg-gray-900 h-full"
-      >
+     
       {shouldShowVideo ? (
         <>
           {!isVideoLoaded && project.posterImage && (
@@ -187,26 +184,6 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
           {project.description}
         </p>
       </div>
-
-      <div className="absolute inset-0 flex justify-center items-center z-30 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 ease-in-out">
-        <div className="inline-block border border-white/50 rounded-full p-3 bg-black/20 group-hover:bg-white/20">
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            ></path>
-          </svg>
-        </div>
-      </div>
-      </Link>
     </div>
   );
 }

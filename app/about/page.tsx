@@ -44,8 +44,6 @@ export default function About() {
         description="Over the last 12 years, Lucy’s business has grown from small residential renovations to large-scale commercial projects. Her journey reflects resilience, innovation, and a commitment to delivering quality craftsmanship."
         description2="Lucy's story is all about her passion, her ability to adapt, and her determination to get things done right. With her in charge, the company doesn’t just build impressive projects; it builds strong, lasting relationships with clients based on trust and consistently good work. Her diverse background is a big key to the company's success and its ongoing commitment to doing a great job."
         mediaOnLeft={false}
-        ctaText="Learn More"
-        ctaLink="/services"
       />
     </>
   );

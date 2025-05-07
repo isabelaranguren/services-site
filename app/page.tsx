@@ -49,7 +49,7 @@ export default function Home() {
               cozy home renovation or a bold commercial transformation, we are
               dedicated to turning your ideas into reality.
             </p>
-            <Button variant="primary">Learn More</Button>
+            <Button href="/contact" variant="primary">Contact Us</Button>
           </div>
         </div>
       </div>

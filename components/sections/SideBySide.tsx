@@ -38,8 +38,12 @@ const SideBySide = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <Button>About Us</Button>
-              <Button variant="outline">View Projects</Button>
+              <Button href='/services' variant="primary">
+                View Services
+              </Button>
+              <Button href='/about' variant="outline">
+                About Us
+                </Button>
             </div>
 
             {/* Numbers Section */}

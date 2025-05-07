@@ -24,7 +24,6 @@ const PageHeroIII: React.FC<PageHeroIIIProps> = ({
   priority = true,
   videoLoadDelay = 1000,
 }) => {
-  // Removed unused isVideoLoaded state
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -102,7 +101,7 @@ const PageHeroIII: React.FC<PageHeroIIIProps> = ({
       {hasBackground && (
         <div className="absolute inset-0 z-0">
           <Image
-            src={imageUrl}
+            src={imageUrl || "/default-image.jpg"}
             alt={title ? `${title} background` : "Hero background image"}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
