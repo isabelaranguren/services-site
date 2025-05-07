@@ -45,14 +45,14 @@ const NavBar: React.FC<NavBarProps> = ({
   let finalTextClasses = "text-sm font-medium ";
   let finalIconClasses = "";
   let finalLogoSrc = BUSINESS_INFO.brand.logo; // Default logo
-  let finalButtonVariant: "primary" | "secondary" | "outline-light" = "primary"; // Default button
+  // Removed unused variable finalButtonVariant
 
   if (scrolled) {
     finalNavClasses += `${bgColor} shadow border-b border-white/20`; // Use specified bgColor, add shadow and subtle border
     finalTextClasses += "text-white hover:text-gray-200";
     finalIconClasses = "text-white hover:text-gray-200";
     finalLogoSrc = BUSINESS_INFO.brand.logo_white; // Use white logo
-    finalButtonVariant = "outline-light"; // Use outline button
+    // Removed unused assignment to finalButtonVariant
   } else {
     switch (initialStyle) {
       case "colored":
@@ -60,14 +60,12 @@ const NavBar: React.FC<NavBarProps> = ({
         finalTextClasses += "text-white hover:text-gray-200";
         finalIconClasses = "text-white hover:text-gray-200";
         finalLogoSrc = BUSINESS_INFO.brand.logo_white;
-        finalButtonVariant = "outline-light";
         break;
       case "transparent":
         finalNavClasses += "bg-transparent";
         finalTextClasses += "text-white hover:text-gray-200";
         finalIconClasses = "text-white hover:text-gray-200";
         finalLogoSrc = BUSINESS_INFO.brand.logo_white; // Use white logo initially
-        finalButtonVariant = "outline-light";
         break;
       case "white":
       default:
@@ -75,7 +73,6 @@ const NavBar: React.FC<NavBarProps> = ({
         finalTextClasses += "text-gray-700 hover:text-gray-900";
         finalIconClasses = "text-gray-500 hover:text-gray-900";
         finalLogoSrc = BUSINESS_INFO.brand.logo; // Use standard logo
-        finalButtonVariant = "primary";
         break;
     }
   }
@@ -84,7 +81,6 @@ const NavBar: React.FC<NavBarProps> = ({
   const textClasses = finalTextClasses;
   const iconClasses = finalIconClasses;
   const logoSrc = finalLogoSrc;
-  const buttonVariant = finalButtonVariant;
 
   // --- Component Return ---
   return (

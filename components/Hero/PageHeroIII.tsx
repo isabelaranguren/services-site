@@ -24,7 +24,7 @@ const PageHeroIII: React.FC<PageHeroIIIProps> = ({
   priority = true,
   videoLoadDelay = 1000,
 }) => {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  // Removed unused isVideoLoaded state
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,7 +39,6 @@ const PageHeroIII: React.FC<PageHeroIIIProps> = ({
   }`;
 
   const handleVideoLoad = () => {
-    setIsVideoLoaded(true);
     setTimeout(() => {
       setIsVideoVisible(true);
     }, 100);

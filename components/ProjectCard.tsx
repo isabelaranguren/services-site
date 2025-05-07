@@ -20,30 +20,30 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, featured = false }: ProjectCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Check if we should show video based on props and device
   const shouldShowVideo =
     featured && project.videoUrl && !isReducedMotionPreferred();
 
-  // Detect reduced motion preference
   function isReducedMotionPreferred() {
     if (typeof window === "undefined") return false;
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
   useEffect(() => {
-    // Setup Intersection Observer for lazy loading
+    const containerEl = containerRef.current;
+    if (!containerEl) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           setIsIntersecting(true);
         } else {
-          // Pause video when out of view to save resources
-          if (isPlaying && videoRef.current) {
+          if (videoRef.current && isPlaying) {
             videoRef.current.pause();
             setIsPlaying(false);
           }
@@ -51,81 +51,78 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
       },
       {
         threshold: 0.1,
-        rootMargin: "200px 0px", // Start loading 200px before element comes into view
+        rootMargin: "200px 0px",
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    observer.observe(containerEl);
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
+      observer.unobserve(containerEl);
     };
   }, [isPlaying]);
 
-  // Handle video loading and playback
   useEffect(() => {
-    if (!videoRef.current || !isIntersecting || !shouldShowVideo) return;
+    const videoEl = videoRef.current;
+    if (!videoEl || !isIntersecting || !shouldShowVideo) return;
 
     const handleCanPlay = () => {
       setIsVideoLoaded(true);
-      videoRef.current
-        ?.play()
+      videoEl
+        .play()
         .then(() => setIsPlaying(true))
         .catch((error) => {
           console.error("Video playback failed:", error);
-          // Fallback to showing the poster image
           setIsVideoLoaded(false);
         });
     };
 
-    const handleError = (error: any) => {
+    const handleError = (error: unknown) => {
       console.error("Video error:", error);
       setIsVideoLoaded(false);
     };
 
-    const video = videoRef.current;
-    video.addEventListener("canplay", handleCanPlay);
-    video.addEventListener("error", handleError);
+    const isLowDataMode =
+      (
+        navigator as Navigator & {
+          connection?: { saveData?: boolean };
+        }
+      )?.connection?.saveData ?? false;
 
-    const isLowDataMode = (navigator as any).connection?.saveData || false;
+    videoEl.preload = isLowDataMode ? "metadata" : "auto";
 
-    video.preload = isLowDataMode ? "metadata" : "auto";
+    videoEl.addEventListener("canplay", handleCanPlay);
+    videoEl.addEventListener("error", handleError);
 
-    if (video.readyState >= 3) {
+    if (videoEl.readyState >= 3) {
       handleCanPlay();
     }
 
     return () => {
-      video.removeEventListener("canplay", handleCanPlay);
-      video.removeEventListener("error", handleError);
+      videoEl.removeEventListener("canplay", handleCanPlay);
+      videoEl.removeEventListener("error", handleError);
     };
   }, [isIntersecting, shouldShowVideo]);
 
-  // Clean up video resources
   useEffect(() => {
+    const videoEl = videoRef.current;
     return () => {
-      if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.src = "";
-        videoRef.current.load();
+      if (videoEl) {
+        videoEl.pause();
+        videoEl.src = "";
+        videoEl.load();
       }
     };
   }, []);
 
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className="relative block overflow-hidden group bg-gray-900 h-full"
-      ref={containerRef}
-    >
-      {/* Background Media - Either Video or Image */}
+    <div ref={containerRef} className="relative block overflow-hidden group bg-gray-900 h-full">
+      <Link
+        href={`/projects/${project.slug}`}
+        className="relative block overflow-hidden group bg-gray-900 h-full"
+      >
       {shouldShowVideo ? (
         <>
-          {/* Poster image shown until video is loaded */}
           {!isVideoLoaded && project.posterImage && (
             <Image
               src={project.posterImage}
@@ -151,8 +148,7 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
             {isIntersecting && (
               <>
                 <source src={project.videoUrl} type="video/mp4" />
-                {/* Add WebM source if available for better performance */}
-                {project.videoUrl.replace(".mp4", ".webm") && (
+                {project.videoUrl?.endsWith(".mp4") && (
                   <source
                     src={project.videoUrl.replace(".mp4", ".webm")}
                     type="video/webm"
@@ -177,16 +173,9 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
 
       <div className="absolute bottom-0 left-0 z-20 mb-10 ml-10 mr-10 max-w-xl">
         <h3
-          className={`font-semibold text-white
-                     border-l border-[#afafaf80]
-                     pl-4
-                     mb-2
-                     transition-all duration-300 ease-in-out
-                     ${
-                       featured
-                         ? "text-3xl md:text-4xl"
-                         : "text-2xl md:text-3xl"
-                     }`}
+          className={`font-semibold text-white border-l border-[#afafaf80] pl-4 mb-2 transition-all duration-300 ease-in-out ${
+            featured ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl"
+          }`}
         >
           {project.title}
         </h3>
@@ -199,12 +188,7 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
         </p>
       </div>
 
-      <div
-        className="absolute inset-0 flex justify-center items-center z-30
-                      opacity-0 group-hover:opacity-100
-                      scale-90 group-hover:scale-100
-                      transition-all duration-300 ease-in-out"
-      >
+      <div className="absolute inset-0 flex justify-center items-center z-30 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 ease-in-out">
         <div className="inline-block border border-white/50 rounded-full p-3 bg-black/20 group-hover:bg-white/20">
           <svg
             className="w-6 h-6 text-white"
@@ -222,7 +206,8 @@ function ProjectCard({ project, featured = false }: ProjectCardProps) {
           </svg>
         </div>
       </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 

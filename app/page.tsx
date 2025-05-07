@@ -2,7 +2,6 @@ import FullWidthImage from "@/components/FullWidthImage";
 import PageHeroII from "@/components/Hero/PageHeroII";
 import NavBar from "@/components/layout/Navbar";
 import MovingBanner from "@/components/MovingBanner";
-import ParallaxSection from "@/components/sections/ParallaxSection";
 import SideBySide from "@/components/sections/SideBySide";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Button from "@/components/ui/Button";
@@ -46,9 +45,9 @@ export default function Home() {
               We Believe Your Space Should Reflect Your Lifestyle, And Vision.
             </h2>
             <p className="mb-4 text-gray-800">
-              Let's shape a space that tells your story. Whether it's a cozy home renovation or a bold commercial
-              transformation, we are dedicated to turning your ideas into
-              reality.
+              Let&apos;s shape a space that tells your story. Whether it&apos;s a
+              cozy home renovation or a bold commercial transformation, we are
+              dedicated to turning your ideas into reality.
             </p>
             <Button variant="primary">Learn More</Button>
           </div>

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="mb-16 flex flex-col items-start justify-between gap-10 md:mb-20 lg:flex-row lg:items-end lg:gap-16">
           <div className="flex w-full flex-col gap-10 lg:max-w-[55%] lg:gap-12">
             <p className="text-4xl font-normal uppercase leading-tight ">
-              Let's Build Something Amazing Together.
+              Let&apos;s Build Something Amazing Together.
             </p>
             <nav className="flex flex-wrap gap-x-8 gap-y-3">
               <Link
@@ -42,10 +42,10 @@ const Footer = () => {
           <div className="flex w-full flex-col gap-8 border-t border-primary pt-8 lg:w-auto lg:max-w-[40%] lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-16">
             <div>
               <div className="mb-2 text-sm capitalize text-primary">
-                / Main office /
+                / Service Areas /
               </div>
               <p className="text-2xl leading-tight  lg:text-3xl">
-                359 Vanderbilt Ave, Brooklyn, NY 11238, USA
+                Houston, Texas
               </p>
             </div>
             <div className="flex flex-col gap-4 text-lg text-primary">
