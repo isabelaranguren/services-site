@@ -1,4 +1,5 @@
 import { BUSINESS_INFO } from "@/lib/constants";
+import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -13,19 +14,13 @@ const Footer = () => {
             </p>
             <nav className="flex flex-wrap gap-x-8 gap-y-3">
               <Link
-                href="/home-1"
+                href="/"
                 className="text-base capitalize text-primary transition-colors"
               >
                 home
               </Link>
               <Link
-                href="/projects"
-                className="text-base capitalize text-primary transition-colors hover:text-white"
-              >
-                Projects
-              </Link>
-              <Link
-                href="/about-us"
+                href="/about"
                 className="text-base capitalize text-primary transition-colors hover:text-white"
               >
                 about us
@@ -37,7 +32,7 @@ const Footer = () => {
                 Services
               </Link>
               <Link
-                href="/contact-us"
+                href="/contact"
                 className="text-base capitalize text-primary transition-colors hover:text-white"
               >
                 contact
@@ -48,47 +43,36 @@ const Footer = () => {
             <div>
               <div className="mb-2 text-sm capitalize text-primary">
                 / Main office /
-              </div>{" "}
+              </div>
               <p className="text-2xl leading-tight  lg:text-3xl">
-                {" "}
-                {/* .adress-footer */}
                 359 Vanderbilt Ave, Brooklyn, NY 11238, USA
               </p>
             </div>
-            <div className="flex gap-5">
-              {" "}
-              <Link
-                href="http://www.instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xl text-primary transition-colors hover:text-white"
-              >
-                IG
-              </Link>
-              <Link
-                href="http://www.twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xl text-primary transition-colors hover:text-white"
-              >
-                TW
-              </Link>
-              <Link
-                href="http://www.facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xl text-primary transition-colors hover:text-white"
-              >
-                FB
-              </Link>
-              <Link
-                href="http://www.linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xl text-primary transition-colors hover:text-white"
-              >
-                LI
-              </Link>
+            <div className="flex flex-col gap-4 text-lg text-primary">
+              <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 mt-1 text-white" aria-hidden="true" />
+                <div>
+                  <Link
+                    href={`tel:${BUSINESS_INFO.phone}`}
+                    aria-label="Call us"
+                    className="hover:text-white"
+                  >
+                    {BUSINESS_INFO.phone}
+                  </Link>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="w-5 h-5 mt-1 text-white" aria-hidden="true" />
+                <div>
+                  <Link
+                    href={`mailto:${BUSINESS_INFO.email}`}
+                    aria-label="Email us"
+                    className="hover:text-white"
+                  >
+                    {BUSINESS_INFO.email}
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -116,17 +100,12 @@ const Footer = () => {
                 IA
               </a>
             </div>
-            <div className="text-primary">
-              Powered by{" "}
-              <a
-                href="https://webflow.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white transition-colors hover:text-primary"
-              >
-                Webflow
-              </a>
-            </div>
+            <Link
+              href="/sitemap.xml"
+              className="text-primary transition-colors hover:text-white"
+            >
+              Sitemap
+            </Link>
           </div>
         </div>
       </div>

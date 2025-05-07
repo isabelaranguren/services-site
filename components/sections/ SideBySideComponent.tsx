@@ -14,6 +14,7 @@ interface SideBySideProps {
   pretitle: string;
   title: string;
   description: string;
+  description2?: string;
   mediaOnLeft?: boolean;
   ctaText?: string;
   ctaLink?: string;
@@ -31,6 +32,7 @@ const SideBySideComponent: React.FC<SideBySideProps> = ({
   pretitle,
   title,
   description,
+  description2,
   mediaOnLeft = true,
   ctaText,
   ctaLink,
@@ -82,6 +84,10 @@ const SideBySideComponent: React.FC<SideBySideProps> = ({
           )}
           <h2 className="text-5xl font-bold mb-4 text-gray-800">{title}</h2>
           <p className="text-lg text-gray-600 mb-6">{description}</p>
+          {/* Optional second description */}
+          {description2 && (
+            <p className="text-lg text-gray-600 mb-6">{description2}</p>
+          )}
 
           {/* Optional CTA button */}
           {ctaText && ctaLink && (

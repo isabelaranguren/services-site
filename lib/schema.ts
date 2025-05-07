@@ -4,9 +4,9 @@ import { BASE_URL, BUSINESS_INFO } from "./constants";
 export const localBusinessSchema: WithContext<LocalBusiness> = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
-  name: "Best Remodelers Inc.",
+  name: BUSINESS_INFO.name, 
   image: "https://yourwebsite.com/logo.png",
-  "@id": "https://yourwebsite.com/",
+  "@id": BASE_URL,
   url: BASE_URL,
   telephone: BUSINESS_INFO.phone,
   address: {

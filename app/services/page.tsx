@@ -4,7 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 
 const featuredProject = {
   slug: "interior-design",
-  title: "Interior Design",
+  title: "Interior & Exterior Design",
   description:
     "Bring your vision to life with personalized interior design services. We create stylish, cohesive spaces that reflect your taste and optimize comfort, lighting, and layout.",
   videoUrl: "/interior-design.mp4",
@@ -12,9 +12,18 @@ const featuredProject = {
   imageAlt: "Modern living room with thoughtfully arranged furniture",
 };
 
+const secondFeaturedProject = {
+  slug: "more-services",
+  title: "Need More Services?",
+  description:
+    "Transform your space with handcrafted, custom cabinetry designed to perfectly fit your needs. Our master craftsmen create beautiful, functional storage solutions that combine timeless style with modern functionality.",
+  imageUrl: "/images/house-construction-2.jpg",
+  imageAlt: "Elegant custom cabinets with fine woodworking details",
+};
+
 const otherProjects = [
   {
-    slug: "bathroon-remodeling",
+    slug: "bathroom-remodeling",
     title: "Bathroom Remodeling",
     description:
       "Upgrade your bathroom into a relaxing and modern retreat with expert tilework, sleek countertops, and stylish finishes. We handle every detail to ensure a clean, functional, and elegant transformation.",
@@ -30,7 +39,7 @@ const otherProjects = [
     imageAlt: "Custom backsplash installed in a stylish kitchen",
   },
   {
-    slug: "Painting",
+    slug: "painting",
     title: "Painting",
     description:
       "Refresh your interiors or exteriors with professional painting services. We use high-quality paints and expert techniques to deliver smooth, lasting finishes that elevate your space.",
@@ -38,15 +47,14 @@ const otherProjects = [
     imageAlt: "Freshly painted interior with modern color palette",
   },
   {
-    slug: "Flooring",
+    slug: "flooring",
     title: "Flooring",
     description:
       "Enhance your home with durable and beautiful flooring options—from hardwood to luxury vinyl. We ensure flawless installation that complements your interior design and stands the test of time.",
-    imageUrl: "/floors.jpg",
+    imageUrl: "/images/floors-2.jpg",
     imageAlt: "New wood flooring being installed in a living room",
   },
 ];
-
 
 export const metadata = {
   title: "Services",
@@ -67,6 +75,7 @@ function Services() {
         <div className="relative overflow-hidden h-[540px]">
           <ProjectCard project={featuredProject} featured={true} />
         </div>
+        {/* Other projects in grid */}
         <div className="max-w-none px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
             {otherProjects.map((project) => (
@@ -78,6 +87,10 @@ function Services() {
               </div>
             ))}
           </div>
+        </div>
+        {/* Second featured project - displayed in the same style as the first one */}
+        <div className="relative overflow-hidden h-[540px]">
+          <ProjectCard project={secondFeaturedProject} featured={true} />
         </div>
       </section>
     </>

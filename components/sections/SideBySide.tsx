@@ -9,7 +9,7 @@ const SideBySide = () => {
         <div className="w-full h-full bg-white flex items-center">
           <div className="w-full aspect-[4/3] pr-8 lg:pr-12 py-8 lg:py-12">
             <Image
-              src="/images/1.jpg"
+              src="/homes.jpg"
               width={800}
               height={600}
               alt="Modern living room renovation"

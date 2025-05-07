@@ -39,7 +39,6 @@ const Blog = async () => {
 
   const adaptPostDataForCard = (post: FetchedPost): PostData => {
     return {
-      // Required fields for PostData
       slug: post.slug,
       title: post.title,
       date: post.date, // Pass the date string directly, card handles formatting
@@ -57,7 +56,8 @@ const Blog = async () => {
         preTitle="Blog"
         title="Latest News"
         description="We believe your space should reflect your unique personality, lifestyle, and vision. Whether it's a cozy home renovation or a bold commercial transformation, we are dedicated to turning your ideas into reality."
-        imageUrl="/images/services-hero-bg.jpg"
+        imageUrl="/images/blog.jpg"
+        videoUrl="/videos/blog.mp4"
       />
       <section className="bg-primary-light py-16 md:py-20 lg:py-32">
         <div className="max-w-screen-xl mx-auto px-4">

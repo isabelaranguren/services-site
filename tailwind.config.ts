@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        scrollText: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-33.3333%)" }, // For text.repeat(3)
+        },
+      },
+      animation: {
+        scroll: "scrollText var(--tw-animation-duration, 30s) linear infinite",
+      },
       colors: {
         "text-dark": "#0e0e0e",
         "paragraph-gray": "#535353",
@@ -29,8 +38,5 @@ module.exports = {
     },
   },
 
-  plugins: [
-    "@tailwindcss/line-clamp",
-    "@tailwindcss/typography",
-  ],
+  plugins: ["@tailwindcss/line-clamp", "@tailwindcss/typography"],
 };
