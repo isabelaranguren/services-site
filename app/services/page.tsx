@@ -1,6 +1,8 @@
 import PageHeroII from "@/components/Hero/PageHeroII";
 import NavBar from "@/components/layout/Navbar";
 import ProjectCard from "@/components/ProjectCard";
+import { servicesSchema } from "@/lib/schema";
+import Head from "next/head";
 
 const featuredProject = {
   slug: "interior-design",
@@ -65,6 +67,14 @@ export const metadata = {
 function Services() {
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(servicesSchema),
+          }}
+        />
+      </Head>
       <NavBar />
       <PageHeroII
         preTitle="/ Projects /"

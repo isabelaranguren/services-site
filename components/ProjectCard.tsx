@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useRef, useState, memo } from "react";
 import Image from "next/image";
 

@@ -46,7 +46,6 @@ export async function getAllCategories(): Promise<Category[]> {
   }
 }
 
-// Helper function to sanitize WordPress content
 export function sanitizeContent(content: string): string {
   if (!content) return "";
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import FAQAccordion from "../faq/FAQAccordion";
-import { faqsData } from "@/data/faqs";
+import { faqsData } from "@/lib/faqs";
 
 function WhyChooseUs() {
   return (
