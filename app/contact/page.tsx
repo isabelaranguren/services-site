@@ -1,7 +1,8 @@
+import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/Hero/PageHero";
 import NavBar from "@/components/layout/Navbar";
 import PictureGrid from "@/components/PictureGrid";
-import ContactSection from "@/components/sections/ContactSection";
+import { BUSINESS_INFO } from "@/lib/constants";
 
 
 export const metadata = {
@@ -11,15 +12,58 @@ export const metadata = {
 
 export default function Contact() {
   return (
-    <div>
+    <>
       <NavBar initialStyle="white" />
-
       <PageHero
         title="We’re creating environments that feel like home."
         description="We specialize in residential and commercial renovations that blend functionality with beauty. With years of experience, a passion for design, and a commitment to quality, we create spaces that inspire."
       />
       <PictureGrid />
-      <ContactSection />
-    </div>
+      <section className="py-16 md:py-24 lg:py-32">
+            <div className="container mx-auto max-w-6xl px-4">
+              <div className="flex flex-col gap-12 md:flex-row md:gap-12 lg:gap-[50px]">
+                <div className="flex w-full flex-col gap-8 md:w-2/5 md:gap-12">
+                  <div>
+                    <h5 className="mb-5 text-xl font-semibold text-text-dark">
+                      Location
+                    </h5>
+                    <a
+                      href="https://maps.google.com/?q=359+Vanderbilt+Ave,+Brooklyn,+NY+11238,+USA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base text-dark-gray transition-colors hover:text-primary"
+                    >
+                      359 Vanderbilt Ave, Brooklyn, NY 11238, USA
+                    </a>
+                  </div>
+                  <div>
+                    <h5 className="mb-5 text-xl font-semibold text-text-dark">
+                      Contact Us
+                    </h5>
+                    <a
+                      href={`tel:${BUSINESS_INFO.phone}`}
+                      className="block text-base text-dark-gray transition-colors hover:text-primary"
+                    >
+                      {BUSINESS_INFO.phone}
+                    </a>
+                    <a
+                      href={`mailto:${BUSINESS_INFO.email}`}
+                      className="mt-2.5 block text-base text-dark-gray transition-colors hover:text-primary"
+                    >
+                      {BUSINESS_INFO.email}
+                    </a>
+                  </div>
+                </div>
+      
+                {/* Right Block: Form */}
+                <div className="w-full md:w-3/5">
+                <ContactForm/>
+                
+                </div>
+              </div>
+            </div>
+          </section>
+
+    </>
   );
 }
